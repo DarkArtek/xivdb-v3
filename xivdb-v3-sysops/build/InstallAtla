@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+#
+# Install script for Atla server
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP ATLA"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# NGINX
+source ./build/common/install_nginx
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+source ./build/common/install_phpredis
+
+# Composer
+source ./build/common/install_composer
+
+# DigitalOcean Server Monitoring
+source ./build/common/install_do_monitoring
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+# Copy nginx profiles
+echo ""
+echo "Copy NGINX configuration"
+echo ""
+
+# Remove defaults
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+# add nginx configs
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonMicroSiteConfig /etc/nginx/sites-available/CommonMicroSiteConfig
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/NginxAtla /etc/nginx/sites-available/NginxAtla
+sudo ln -s /etc/nginx/sites-available/NginxAtla /etc/nginx/sites-enabled/NginxAtla
+
+# add base nginx config
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonNginx /etc/nginx/nginx.conf
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-sync.git
+
+
+#
+# Setup
+#
+
+cd ~/xivdb-v3-sync && composer install && cp ~/xivdb-v3-sync/.env.dist ~/xivdb-v3-sync/.env
+
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

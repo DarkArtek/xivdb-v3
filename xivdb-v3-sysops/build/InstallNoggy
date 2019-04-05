@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+#
+# Install script for Noggy server
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP NOGGY"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# NGINX
+source ./build/common/install_nginx
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+
+# Composer
+source ./build/common/install_composer
+
+# DigitalOcean Server Monitoring
+source ./build/common/install_do_monitoring
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+# Copy nginx profiles
+echo ""
+echo "Copy NGINX configuration"
+echo ""
+
+# Remove defaults
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+# add nginx configs
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonMicroSiteConfig /etc/nginx/sites-available/CommonMicroSiteConfig
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/NginxNoggy /etc/nginx/sites-available/NginxNoggy
+sudo ln -s /etc/nginx/sites-available/NginxNoggy /etc/nginx/sites-enabled/NginxNoggy
+
+# add base nginx config
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonNginx /etc/nginx/nginx.conf
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-mognet.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-feedback.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-translations.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-screenshots.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-comments.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-pages.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-email.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-devapps.git
+
+
+#
+# Setup
+#
+
+cd ~/xivdb-v3-mognet && composer install && cp ~/xivdb-v3-mognet/.env.dist ~/xivdb-v3-mognet/.env
+cd ~/xivdb-v3-feedback && composer install && cp ~/xivdb-v3-feedback/.env.dist ~/xivdb-v3-feedback/.env
+cd ~/xivdb-v3-translations && composer install && cp ~/xivdb-v3-translations/.env.dist ~/xivdb-v3-translations/.env
+cd ~/xivdb-v3-screenshots && composer install && cp ~/xivdb-v3-screenshots/.env.dist ~/xivdb-v3-screenshots/.env
+cd ~/xivdb-v3-screenshots && composer install && cp ~/xivdb-v3-screenshots/.env.dist ~/xivdb-v3-screenshots/.env
+cd ~/xivdb-v3-comments && composer install && cp ~/xivdb-v3-comments/.env.dist ~/xivdb-v3-comments/.env
+cd ~/xivdb-v3-pages && composer install && cp ~/xivdb-v3-pages/.env.dist ~/xivdb-v3-pages/.env
+cd ~/xivdb-v3-email && composer install && cp ~/xivdb-v3-email/.env.dist ~/xivdb-v3-email/.env
+cd ~/xivdb-v3-devapps && composer install && cp ~/xivdb-v3-devapps/.env.dist ~/xivdb-v3-devapps/.env
+
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

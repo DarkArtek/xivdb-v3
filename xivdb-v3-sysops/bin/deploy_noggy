@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+
+#
+# Comments
+#
+
+if whiptail --yesno "Deploy Comments?" 10 30 ;then
+    cd ~/xivdb-v3-comments/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# DevApps
+#
+
+if whiptail --yesno "Deploy DevApps?" 10 30 ;then
+    cd ~/xivdb-v3-devapps/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Email
+#
+
+if whiptail --yesno "Update Email?" 10 30 ;then
+    cd ~/xivdb-v3-email/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Feedback
+#
+
+if whiptail --yesno "Update Feedback?" 10 30 ;then
+    cd ~/xivdb-v3-feedback/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Mognet
+#
+
+if whiptail --yesno "Update Mognet?" 10 30 ;then
+    cd ~/xivdb-v3-mognet/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Pages
+#
+
+if whiptail --yesno "Update Pages?" 10 30 ;then
+    cd ~/xivdb-v3-pages/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Screenshots
+#
+
+if whiptail --yesno "Update Screenshots?" 10 30 ;then
+    cd ~/xivdb-v3-screenshots/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Translations
+#
+
+if whiptail --yesno "Update Translations?" 10 30 ;then
+    cd ~/xivdb-v3-translations/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi

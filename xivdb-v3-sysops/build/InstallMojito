@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+#
+# Install script for Mojito server
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP MOJITO"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# NGINX
+source ./build/common/install_nginx
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+
+# Composer
+source ./build/common/install_composer
+
+# DigitalOcean Server Monitoring
+source ./build/common/install_do_monitoring
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+# Copy nginx profiles
+echo ""
+echo "Copy NGINX configuration"
+echo ""
+
+# Remove defaults
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+# add nginx configs
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonMicroSiteConfig /etc/nginx/sites-available/CommonMicroSiteConfig
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/NginxMojito /etc/nginx/sites-available/NginxMojito
+sudo ln -s /etc/nginx/sites-available/NginxMojito /etc/nginx/sites-enabled/NginxMojito
+
+# add base nginx config
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonNginx /etc/nginx/nginx.conf
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-data.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-maps.git
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-tooltips.git
+
+
+#
+# Setup
+#
+
+cd ~/xivdb-v3-data && composer install && cp ~/xivdb-v3-data/.env.dist ~/xivdb-v3-data/.env
+cd ~/xivdb-v3-maps && composer install && cp ~/xivdb-v3-maps/.env.dist ~/xivdb-v3-maps/.env
+cd ~/xivdb-v3-tooltips && composer install && cp ~/xivdb-v3-tooltips/.env.dist ~/xivdb-v3-tooltips/.env
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

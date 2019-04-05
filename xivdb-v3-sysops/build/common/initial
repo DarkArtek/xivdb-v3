@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+#
+# Common initial install script, will update
+# the server and install some properties
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Updating server"
+echo ""
+
+echo "- creating ssh folder"
+mkdir /home/xivdb/.ssh/
+
+echo "- updating"
+sudo apt-get update -y
+
+echo "- upgrading"
+sudo apt-get upgrade -y
+
+echo "- add properties"
+sudo apt-get install -y python-software-properties
+sudo apt-get install -y software-properties-common
+
+echo "- add php repository"
+sudo add-apt-repository ppa:ondrej/php -y
+
+echo "- updating"
+sudo apt-get update -y
+
+# some common OS libraries:
+echo "- installing: acl, htop, unzip, curl"
+sudo apt-get install -y acl htop unzip curl
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"

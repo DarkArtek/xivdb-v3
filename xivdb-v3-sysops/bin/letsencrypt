@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "------------------------------------------------------------------------------------"
+echo "Installing Lets-Encrypt"
+sudo add-apt-repository ppa:certbot/certbot -y
+sudo apt-get update -y
+sudo apt-get install python-certbot-nginx -y
+
+echo "Obtaining Certificate"
+echo "DO NOT ACCEPT HTTP TO HTTPS, IT IS DONE ALREADY"
+echo ""
+sudo certbot --nginx -d xivsync.xivdb.com
+
+echo ""
+echo "Verify Auto-Renewal"
+sudo certbot renew --dry-run
+echo "------------------------------------------------------------------------------------"

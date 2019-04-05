@@ -1,0 +1,54 @@
+.GameUserBar {
+    display: flex;
+    background-color: #222;
+    box-shadow: 0 1px 15px #000;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    padding: 15px;
+    z-index: 10;
+    width: 1197px;
+    height: 62px;
+    overflow: hidden;
+}
+.GameUserBar > div {
+    flex: 0 1 50%;
+}
+.GameUserBar > div:first-of-type {
+    padding: 2px 0 0 8px;
+    font-family: var(--fancy-font-two);
+    font-size: 22px;
+    color: #fff;
+}
+.GameUserBar > div:last-of-type {
+    text-align: right;
+    padding: 3px 15px 0 0;
+    font-size: 20px;
+}
+.GameUserBar > div:last-of-type .Gil {
+    margin-left: 50px;
+}
+.GameUserBar > div:last-of-type .Gil img,
+.GameUserBar > div:last-of-type .Experience img{
+    vertical-align: top;
+    margin: 3px 3px 0 0;
+}
+.GameUserBar > div:last-of-type .Experience {
+    margin-left: 50px;
+}
+.GameUserBar > div:last-of-type .Level i,
+.GameUserBar > div:last-of-type .Experience i {
+    opacity: 0.5;
+    font-size: 15px;
+    font-style: normal;
+}
+.GameUserBar > div:last-of-type .Experience em {
+    display: inline-block;
+    width: 38px;
+}
+
+.GameUserBar > div:last-of-type .Level em {
+    color: aqua;
+}
+.GameUserBar > div:last-of-type .Gil em {
+    color: #faff82;
+}

@@ -1,0 +1,1105 @@
+{
+	"info": {
+		"_postman_id": "cb291cf9-5b8b-460b-be2b-a9ae6b6dc3e5",
+		"name": "db",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MogNet Feedback New",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"3849gh9384gn9\",\n\t\"title\": \"Your site is still not finished ...\",\n\t\"message\": \"Sort your shit out please, this site is still not working, I thought v3 was mean't to be the craze yet I can't even view it?\",\n\t\"data\": [\n\t\t\"browser: Chrome\",\n\t\t\"version: 62\"\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://mognet.xivdb.local/api/feedback/new",
+					"protocol": "http",
+					"host": [
+						"mognet",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"api",
+						"feedback",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email Ping",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"josh@viion.co.uk\",\n\t\"subject\": \"test\",\n\t\"template\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "http://email.ms.xivdb.local/ping",
+					"protocol": "http",
+					"host": [
+						"email",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email Send",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"josh@viion.co.uk\",\n\t\"subject\": \"test\",\n\t\"template\": \"test\"\n}"
+				},
+				"url": {
+					"raw": "http://email.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"email",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Email Send Multi",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"josh@viion.co.uk,josh.freeman@sykescottages.co.uk,kupo@xivdb.com\",\n\t\"subject\": \"Updated\",\n\t\"template\": \"feedback_updated\",\n\t\"data\": {\n\t\t\"feedback\": {\n\t\t\t\"id\": 1,\n\t\t\t\"ref\": 1,\n\t\t\t\"title\": \"title\",\n\t\t\t\"message\": \"message\",\n\t\t\t\"data\": [],\n\t\t\t\"history\": []\n\t\t}\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://email.ms.xivdb.local/multi",
+					"protocol": "http",
+					"host": [
+						"email",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"multi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"111\",\n\t\"title\": \"Trst Feedback\",\n\t\"message\": \"Lorem ipsum dolor sit amet \",\n\t\"emailSubscriptions\": [\n\t\t\"josh.freeman@sykescottages.co.uk\",\n\t\t\"kupo@xivdb.com\"\n\t]\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Comment Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\": \"I updated a comment\"\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/3cd84782-6140-4895-bf04-12b62a09b68f/comment/cadbcc94-2956-40b8-870e-6829d2bdaecc?fully=true",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"3cd84782-6140-4895-bf04-12b62a09b68f",
+						"comment",
+						"cadbcc94-2956-40b8-870e-6829d2bdaecc"
+					],
+					"query": [
+						{
+							"key": "fully",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_id\": \"123\",\n\t\"title\": \"Some Support Ticket\",\n\t\"message\": \"ma message\",\n\t\"data\": {\n\t\t\"browser\": \"Chrome\",\n\t\t\"version\": 62\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/5a0733ca-f808-4c71-b311-01e8bb3a5a64",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"5a0733ca-f808-4c71-b311-01e8bb3a5a64"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user_id\": \"123\",\n  \"title\": \"Some Support Ticket\",\n  \"message\": \"ma message\",\n  \"data\": {\n    \"browser\": \"Chrome\",\n    \"version\": 62\n  }\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/8ec01899-615d-4961-8156-84ab63770b18",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"8ec01899-615d-4961-8156-84ab63770b18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_id\": \"123\",\n\t\"title\": \"Some Support Ticket\",\n\t\"message\": \"ma message\",\n\t\"data\": {\n\t\t\"browser\": \"Chrome\",\n\t\t\"version\": 62\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/search?private=1",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "private",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"category\": \"wip\"\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/260e85fd-ae09-429d-9e41-aeeb4e3084cb",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"260e85fd-ae09-429d-9e41-aeeb4e3084cb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Comment Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\": \"I updated a comment\"\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/3cd84782-6140-4895-bf04-12b62a09b68f/comment/cadbcc94-2956-40b8-870e-6829d2bdaecc",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"3cd84782-6140-4895-bf04-12b62a09b68f",
+						"comment",
+						"cadbcc94-2956-40b8-870e-6829d2bdaecc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Feedback Comment Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"123\",\n\t\"message\": \"Test Comment\"\n}"
+				},
+				"url": {
+					"raw": "http://feedback.ms.xivdb.local/3cd84782-6140-4895-bf04-12b62a09b68f/comment",
+					"protocol": "http",
+					"host": [
+						"feedback",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"3cd84782-6140-4895-bf04-12b62a09b68f",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Page Ping",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkeyz"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Hello World Page 222444\",\n\t\"html\": \"<h1>HTML</h1>\",\n\t\"js\": \"<script>console.log('example');</script>\",\n\t\"css\": \"<style>html { color: #f00; }</style>\",\n\t\"series\": \"examples\"\n}"
+				},
+				"url": {
+					"raw": "http://pages.ms.xivdb.local/ping",
+					"protocol": "http",
+					"host": [
+						"pages",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"ping"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Page Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Hello World Page 222444\",\n\t\"html\": \"<h1>HTML</h1>\",\n\t\"js\": \"<script>console.log('example');</script>\",\n\t\"css\": \"<style>html { color: #f00; }</style>\",\n\t\"series\": \"examples\"\n}"
+				},
+				"url": {
+					"raw": "http://pages.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"pages",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Page Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Hello World Page 2\",\n\t\"html\": \"<h1>HTML</h1>\",\n\t\"js\": \"<script>console.log('example');</script>\",\n\t\"css\": \"<style>html { color: #f00; }</style>\",\n\t\"series\": \"examples\"\n}"
+				},
+				"url": {
+					"raw": "http://pages.ms.xivdb.local/b295b4b6-707f-4e3d-9443-e165300d6aa0",
+					"protocol": "http",
+					"host": [
+						"pages",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"b295b4b6-707f-4e3d-9443-e165300d6aa0"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Page Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Hello World Page 2\",\n  \"html\": \"<h1>HTML</h1>\",\n  \"js\": \"<script>console.log('example');</script>\",\n  \"css\": \"<style>html { color: #f00; }</style>\",\n  \"series\": \"examples\"\n}"
+				},
+				"url": {
+					"raw": "http://pages.ms.xivdb.local/b295b4b6-707f-4e3d-9443-e165300d6aa0",
+					"protocol": "http",
+					"host": [
+						"pages",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"b295b4b6-707f-4e3d-9443-e165300d6aa0"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Page Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://pages.ms.xivdb.local/b295b4b6-707f-4e3d-9443-e165300d6aa0",
+					"protocol": "http",
+					"host": [
+						"pages",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"b295b4b6-707f-4e3d-9443-e165300d6aa0"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idUnique\": \"item:1675\",\n  \"idReply\": null,\n  \"idUser\": \"helloworld\",\n  \"message\": \"hello world\"\n}"
+				},
+				"url": {
+					"raw": "http://comments.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"comments",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "message",
+							"value": "hello",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://comments.ms.xivdb.local/search?idUnique=item:1675",
+					"protocol": "http",
+					"host": [
+						"comments",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "idUnique",
+							"value": "item:1675"
+						}
+					]
+				},
+				"description": "Search for comments"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"message\": \"Test\"\n}"
+				},
+				"url": {
+					"raw": "http://comments.ms.xivdb.local/acbc8ac1-4119-4e21-9824-a31527056c74",
+					"protocol": "http",
+					"host": [
+						"comments",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"acbc8ac1-4119-4e21-9824-a31527056c74"
+					]
+				},
+				"description": "Update an existing comment"
+			},
+			"response": []
+		},
+		{
+			"name": "Comment Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://comments.ms.xivdb.local/acbc8ac1-4119-4e21-9824-a31527056c74",
+					"protocol": "http",
+					"host": [
+						"comments",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"acbc8ac1-4119-4e21-9824-a31527056c74"
+					]
+				},
+				"description": "Deletes an existing comment, this is not a \"real\" delete but a soft-delete and we need the response (as the message changes). This explains why it is a GET not a DELETE."
+			},
+			"response": []
+		},
+		{
+			"name": "Developer App Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 123,\n  \"title\": \"Hello World\",\n  \"description\": \"Lorem Ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://devapps.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"devapps",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Developer App Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Hello World Updated\",\n  \"description\": \"Lorem Ipsum Hello World\"\n}"
+				},
+				"url": {
+					"raw": "http://devapps.ms.xivdb.local/9f59245d-0f0c-43a1-8616-a25f7ce73640",
+					"protocol": "http",
+					"host": [
+						"devapps",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"9f59245d-0f0c-43a1-8616-a25f7ce73640"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Developer App Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 123,\n  \"title\": \"Hello World\",\n  \"description\": \"Lorem Ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://devapps.ms.xivdb.local/adbdd052-321e-4bab-b5e6-bcad36a38286",
+					"protocol": "http",
+					"host": [
+						"devapps",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"adbdd052-321e-4bab-b5e6-bcad36a38286"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Developer App Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 123,\n  \"title\": \"Hello World\",\n  \"description\": \"Lorem Ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://devapps.ms.xivdb.local/search",
+					"protocol": "http",
+					"host": [
+						"devapps",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"search"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Developer App Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://devapps.ms.xivdb.local/9f59245d-0f0c-43a1-8616-a25f7ce73640",
+					"protocol": "http",
+					"host": [
+						"devapps",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"9f59245d-0f0c-43a1-8616-a25f7ce73640"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Translation Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idString\": \"HELLO_WORLD\",\n  \"en\": \"Hello World\"\n}"
+				},
+				"url": {
+					"raw": "http://translations.ms.xivdb.local/",
+					"protocol": "http",
+					"host": [
+						"translations",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Translation  Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"idString\": \"HELLO_WORLD_TEXT\",\n  \"en\": \"Hello World Text\"\n}"
+				},
+				"url": {
+					"raw": "http://translations.ms.xivdb.local/4b82fa56-cd3e-4b04-9845-99e642565a8e",
+					"protocol": "http",
+					"host": [
+						"translations",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"4b82fa56-cd3e-4b04-9845-99e642565a8e"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Translation  Get",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 123,\n  \"title\": \"Hello World\",\n  \"description\": \"Lorem Ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://translations.ms.xivdb.local/4b82fa56-cd3e-4b04-9845-99e642565a8e",
+					"protocol": "http",
+					"host": [
+						"translations",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"4b82fa56-cd3e-4b04-9845-99e642565a8e"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Translation Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 123,\n  \"title\": \"Hello World\",\n  \"description\": \"Lorem Ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://translations.ms.xivdb.local/search?en=hel",
+					"protocol": "http",
+					"host": [
+						"translations",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "en",
+							"value": "hel"
+						}
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		},
+		{
+			"name": "Translation Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer secretkey"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://translations.ms.xivdb.local/4b82fa56-cd3e-4b04-9845-99e642565a8e",
+					"protocol": "http",
+					"host": [
+						"translations",
+						"ms",
+						"xivdb",
+						"local"
+					],
+					"path": [
+						"4b82fa56-cd3e-4b04-9845-99e642565a8e"
+					]
+				},
+				"description": "Create a new comment via post"
+			},
+			"response": []
+		}
+	]
+}

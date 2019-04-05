@@ -1,0 +1,32 @@
+{% extends "base/frontend.twig"  %}
+
+{% block title %}Banned{% endblock %}
+
+{% block body %}
+
+    <div class="banned">
+
+        <img src="/img/ui/misc/titan.png">
+
+        <br><br><br>
+        <h1>Account Banned</h1>
+        <br>
+
+        <div class="box box-padded">
+            <p>Hello <strong>{{ username }}</strong>,</p>
+
+            <p>I am sad to say your account has been banned from XIVDB, please check your email
+            for details as to the reason this action has been placed on your account as well as
+            details on how to delete your account information. If you wish to discuss your ban,
+            please contact support or a developer on the XIVDB Discord.</p>
+
+            <p class="banned-time">
+                Your ban will lift: {{ banned|dateRelative }}
+            </p>
+
+            <p>Good luck adventurer!<br>- XIVDB Team</p>
+        </div>
+
+    </div>
+
+{% endblock %}

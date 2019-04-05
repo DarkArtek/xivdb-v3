@@ -1,0 +1,81 @@
+<div class="sea-load"></div>
+<div class="sea">
+    <div>
+        <div class="sea-fil">
+
+            <div class="sea-menu">
+                <button class="btn btn-primary" data-menu="filters">Filters</button>
+                <button class="btn btn-secondary" data-menu="settings">Settings</button>
+            </div>
+
+            {# FILTERS #}
+            <div class="sea-block sea-filters on">
+                <form>
+                    <button type="submit" class="btn btn-block btn-secondary">Filter Search</button>
+                </form>
+            </div>
+
+            {# SETTINGS #}
+            <div class="sea-block sea-settings">
+                <form class="sea-opt-form">
+                    <div class="form-group">
+                        <label for="searchOptStringAlgo">String Algorithm</label>
+                        <select id="searchOptStringAlgo" class="form-control">
+                            <option value="wildcard">Wildcard (XX??XX*)</option>
+                            <option value="match_phrase_prefix">Match Phrase Prefix (XXX*)</option>
+                            <option value="multi_match">Multi-Match (*XX*)</option>
+                            <option value="query_string">Query String (X AND Y OR Z)</option>
+                            <option value="term">Term (X)</option>
+                            <option value="fuzzy">Fuzzy (?? Tries to guess)</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="searchOptInfinite">
+                        <label class="form-check-label" for="searchOptInfinite">Enable infinite scrolling</label>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="searchOptTyping">
+                        <label class="form-check-label" for="searchOptTyping">Search while typing</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="searchOptTypingDelay">Typing delay (ms)</label>
+                        <input type="email" class="form-control" id="searchOptTypingDelay" value="500" placeholder="ms">
+                        <small class="form-text text-muted">Minimum: 100ms</small>
+                    </div>
+
+                    {% if auth.user %}
+                    <hr>
+                    <h3>BETA</h3>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="searchOptAutoComplete">
+                        <label class="form-check-label" for="searchOptAutoComplete">Enable Auto-Complete</label>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="searchOptPersistence">
+                        <label class="form-check-label" for="searchOptPersistence">Persist Search Connection</label>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <div class="sea-top">
+            <span class="sea-results"></span> results -
+            <span class="sea-pages"></span> pages
+            <span class="sea-ms fr">
+                <span>-</span>ms
+            </span>
+        </div>
+        <div class="sea-res"></div>
+        <div class="sea-more off">
+            <button class="btn btn-secondary">Show More</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+#
+# Install script for SyncRabbitMq
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP XIVSYNC HOME"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# NGINX
+source ./build/common/install_nginx
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+
+# Composer
+source ./build/common/install_composer
+
+# Install RabbitMQ
+source ./build/common/install_rabbitmq
+
+# MariaDB
+source ./build/common/install_mariadb
+
+# ---------------------------------------
+# Custom installation stuff for: search
+# ---------------------------------------
+
+# Copy nginx profiles
+echo ""
+echo "Copy NGINX configuration"
+echo ""
+
+# Remove defaults
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+# add nginx configs
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonMicroSiteConfig /etc/nginx/sites-available/CommonMicroSiteConfig
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/NginxSyncHome /etc/nginx/sites-available/NginxSyncHome
+sudo ln -s /etc/nginx/sites-available/NginxSyncHome /etc/nginx/sites-enabled/NginxSyncHome
+
+# add base nginx config
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonNginx /etc/nginx/nginx.conf
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivsync.git
+
+cd ~/xivsync
+composer install
+cp ~/xivsync/.env.dist ~/xivsync/.env
+
+#
+# Custom stuff
+#
+
+sudo apt-get install clibcurl4-openssl-dev pkg-config libssl-dev libsslcommon2-dev
+sudo apt-get install pkg-config libssl-dev
+sudo sudo pecl install -f event
+
+sudo echo "extension=event.so" > /etc/php/7.1/mods-available/event.ini
+sudo ln -sf /etc/php/7.2/mods-available/event.ini /etc/php/7.2/fpm/conf.d/20-event.ini
+sudo ln -sf /etc/php/7.2/mods-available/event.ini /etc/php/7.2/cli/conf.d/20-event.ini
+sudo service php7.2-fpm restart
+
+#
+# Import mysql db
+#
+
+# Import SQL
+mysql -uroot -p9D0SHvjFofUcvvDvpAdR < /home/xivdb/xivdb-v3-sysops/build/SyncHomeDatabase.sql
+
+# Restart mysql
+sudo service mysql restart
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

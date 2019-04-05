@@ -1,0 +1,198 @@
+{% extends 'base/frontend.twig'  %}
+
+{% block title %}{{ character.name }} - {{ character.server }} - XIVDB{% endblock %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    {% if character.settings.hidden %}
+        <div class="container container-page">
+            <div class="alert alert-danger">
+                This character is private.
+            </div>
+        </div>
+    {% else %}
+        {# Character Header #}
+        <div class="ch-top">
+            <img src="{{ content.data.portrait }}" height="640px">
+            <div class="ch-top-mask"></div>
+
+            <div class="ch-top-left">
+                {% if content.data.title %}
+                    <div class="ch-title">{{ content.data.title.Name }}</div>
+                {% endif %}
+                <h1 class="ch-name">{{ content.data.name }}</h1>
+                <div class="ch-server">{{ content.data.server }}</div>
+
+                <div class="ch-bottom">
+                    <div class="ch-profile">
+                        <p>
+                            {{ content.data.gender == 1 ? 'Male' : 'Female' }}
+                            {{ content.data.race.Name }}
+                            {{ content.data.clan.Name }}
+                        </p>
+                        <p>
+                            {{ content.data.nameday }}
+                        </p>
+                        <p>
+                            {{ content.data.city.Name }}
+                            <i class="ch-icon" style="background-image: url('{{ content.data.city.Icon }}');"></i>
+                        </p>
+                        <p>
+                            {{ content.data.guardian.Name }}
+                            <i class="ch-icon" style="background-image: url('{{ content.data.guardian.Icon }}');"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ch-top-right">
+
+                {# FREE COMPANY #}
+                {% if content.fc %}
+                    <div class="ch-fc"><div>
+                    <span>
+                        <img src="{{ content.fc.crest[0] }}" height="60">
+                        <img src="{{ content.fc.crest[1] }}" height="60">
+                        <img src="{{ content.fc.crest[2] }}" height="60">
+                    </span>
+                        </div>
+                        <div>
+                            <h2 class="ch-fc-name">
+                                <a href="{{ path('lodestone_freecompany', { id: content.fc.id, name: content.fc.name, server: content.fc.server }) }}">{{ content.fc.name }}</a>
+                            </h2>
+                            <p>{{ content.fc.slogan }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div>
+                        <em>No Free Company affiliation</em>
+                    </div>
+                {% endif %}
+
+                {# Grand Company #}
+                <div class="ch-bottom">
+                    {% if content.data.grandcompany %}
+                        <div class="ch-gc">
+                            {% for GrandCompanyId in [1,2,3] %}
+                                {% set GC = attribute(content.data.grandcompany, GrandCompanyId) is defined ? attribute(content.data.grandcompany, GrandCompanyId) : null %}
+                                {% if GC %}
+                                    <div class="ch-gc-row">
+                                        <div>
+                                            <div class="ch-gc-icon ch-gc-{{ GC.gc.ID }}">
+                                                <img src="{{ GC.icon.Icon }}" height="120">
+                                                <img src="{{ GC.icon.Icon }}" height="40">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="ch-gc-name">{{ GC.gc.Name }}</div>
+                                            <div class="ch-gc-rank">{{ GC.rank.Name }}</div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div>
+                            <em>No Grand Company affiliation</em>
+                        </div>
+                    {% endif %}
+
+                    {# ACTIVE CLASS #}
+                    <div class="ch-ac">
+                        <div>
+                            <img src="{{ content.data.activeClassJob.job.Icon }}" class="ch-ac-icon" height="64">
+                        </div>
+                        <div class="ch-ac-title">
+                            <span>{{ content.data.activeClassJob.level }}</span>
+                            {{ content.data.activeClassJob.job.Name|title }}
+
+                            <div class="ch-ac-bar">
+                                <div class="ch-ac-bar-out">
+                                <span style="width: {{ (content.data.activeClassJob.expLevel / content.data.activeClassJob.expLevelMax) * 100 }}%;">
+                                    <em>{{ ((content.data.activeClassJob.expLevel / content.data.activeClassJob.expLevelMax) * 100)|round }}%</em>
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ch-page container">
+            <div class="ch-page-sync">
+                <div>
+                    <table>
+                        <td>
+                            <h6>LAST SYNCED</h6>
+                            {{ content.sync.last_synced|dateRelative }}
+                        </td>
+                        <td>
+                            <h6>SYNC SERVERS</h6>
+                            {{ content.sync.sync_server }}
+                        </td>
+                        <td>
+                            <h6>&nbsp;</h6>
+                            {{ content.sync.sync_server_achievements }}
+                        </td>
+                        <td>
+                            <h6>LODESTONE ID</h6>
+                            <a href="https://na.finalfantasyxiv.com/lodestone/content/{{ content.sync.lodestone_id }}/" target="_blank">{{ content.sync.lodestone_id }}</a>
+                        </td>
+                    </table>
+                </div>
+                <div align="right">
+                    <table>
+                        <td>
+                            <h6>LAST UPDATED</h6>
+                            {{ content.sync.last_updated ? content.sync.last_updated|dateRelative : 'Never' }}
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-success">UPDATE</button>
+                        </td>
+                    </table>
+
+                </div>
+            </div>
+
+            {% if not character.settings.hiddenClassJobs %}
+            <h1>CLASS/JOBS</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenClassJobs %}
+            <h1>GEARSETS</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenEvents %}
+            <h1>EVENTS</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenTracking %}
+            <h1>TRACKING</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenAchievements %}
+            <h1>ACHIEVEMENTS</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenCollectables %}
+            <h1>COLLECTABLES</h1>
+            {% endif %}
+
+            {% if not character.settings.hiddenFriends %}
+            <h1>FRIENDS</h1>
+            {% endif %}
+
+
+            <br><br><br>
+            {{ dump(character) }}<hr>{{ dump(content) }}
+
+        </div>
+    {% endif %}
+
+{% endblock %}

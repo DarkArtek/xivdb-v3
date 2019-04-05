@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Contrail+One|Merienda:400,700" rel="stylesheet">
+
+        <!-- custom -->
+        <link rel="stylesheet"  href="/Vars.css">
+        <link rel="stylesheet"  href="/Numbers.css">
+        <link rel="stylesheet"  href="/Party.css">
+        <link rel="stylesheet"  href="/Actions.css">
+        <link rel="stylesheet"  href="/Base.css">
+        <link rel="stylesheet"  href="/Battle.css">
+        <link rel="stylesheet"  href="/SpeechBubbles.css">
+        <link rel="stylesheet"  href="/GameUserBar.css">
+        <link rel="stylesheet"  href="/GameHotbars.css">
+        <link rel="stylesheet"  href="/Windows.css">
+        <link rel="stylesheet"  href="/styles.css">
+    </head>
+    <body>
+
+        <p>Todo: Show a win screen + loot box rewards. Add health mechanics. Add Debuff mechanics.</p>
+
+        <div class="GameUserBar">
+            <div class="GameActiveFloor">
+
+            </div>
+            <div>
+                <span class="Level">
+                    <i>LV</i> <em>1</em>
+                </span>
+                <span class="Experience">
+                    <img src="/img/exp.png" height="24" width="24"> <em>0</em> <i>1000</i>
+                </span>
+                <span class="Gil">
+                    <img src="/img/061575.png" height="24" width="24"> <em>500</em>
+                </span>
+            </div>
+        </div>
+
+        <div class="GameWindow">
+
+            <div class="GameOver">
+                <h1>You were defeated!</h1>
+                <p>You made it to floor <em>34</em>.</p>
+                <br><br><br><br><br>
+                <button class="btn btn-lg btn-primary GameOverRestart">RETRY</button>
+            </div>
+
+            <div class="DamageNumbers">
+                <div class="DamageNumbersPlayers"><span>4120!!!</span></div>
+                <div class="DamageNumbersEnemy"><span>762</span></div>
+            </div>
+
+            <div class="SpeechBubbles">
+                <div class="SpeechPlayer" style="background-image:url(/img/bubble_player.png);">
+                    <span>-</span>
+                </div>
+                <div class="SpeechEnemy" style="background-image:url(/img/bubble_enemy.png);">
+                    <span>-</span>
+                </div>
+                <div class="SpeechSystem" style="background-image:url(/img/bubble_system2.png);">
+                    <span>-</span>
+                </div>
+                <div class="SpeechPC" style="background-image:url(/img/bubble_system.png);">
+                    <span>Hello Kupo! I think you need some help!</span>
+                </div>
+            </div>
+
+            <!-- start screen -->
+            <div class="StartWindow">
+                <img src="/img/dd.png" height="118" class="logo">
+                <button class="btn btn-primary btn-lg StartButton">Start Game</button>
+            </div>
+
+            <!-- party creation -->
+            <div class="PartyWindow">
+                <h1>
+                    BUILD YOUR PARTY
+                    <small>Choose your roles carefully! You only have 1 life.</small>
+                </h1>
+
+                <div class="PartySelection">
+                    <div>
+                        <div class="PartySelectionContainer">
+                            <div class="PartyMember PartyMember1" data-slot="1">Select Member 1</div>
+                            <div class="PartyMember PartyMember2" data-slot="2">Select Member 2</div>
+                            <div class="PartyMember PartyMember3" data-slot="3">Select Member 3</div>
+                            <div class="PartyMember PartyMember4" data-slot="4">Select Member 4</div>
+                        </div>
+                    </div>
+                    <div>
+                        <!-- Class Job List -->
+                    </div>
+                </div>
+
+                <div class="PartyFooter">
+                    <div>
+                        <button class="btn btn-primary RandomPartyButton">Randomize</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-success EnterInstanceButton" disabled="disabled">Start</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- enemy party -->
+            <div class="party-left"></div>
+
+            <!-- player party -->
+            <div class="party-right">
+                <div class="player player1" data-playerid="1"></div>
+                <div class="player player2" data-playerid="2"></div>
+                <div class="player player3" data-playerid="3"></div>
+                <div class="player player4" data-playerid="4"></div>
+                <img src="/img/cursor.png" class="ActivePlayerCursor">
+                <img src="/img/cursor2.png" class="ActiveEnemyCursor">
+            </div>
+
+            <!-- party list -->
+            <div class="PartyList"></div>
+
+            <!-- copyright -->
+            <div class="copyright">
+                xivdb © 2010-2018 - Content owned by: SQUARE ENIX CO., LTD.
+            </div>
+
+        </div>
+
+        <div class="GameHotBar">
+            <div class="GameGCD">
+                <div class="GameTitle">
+                    GLOBAL COOL DOWN
+                </div>
+                <div class="GameProgress">
+                    <span style="width: 0"></span>
+                </div>
+            </div>
+            <div class="GameSkillsClassName"></div>
+            <div class="GameSkills">
+            </div>
+        </div>
+
+        <script src="/misc.js"></script>
+        <script src="/EnemyDB.js"></script>
+        <script src="/Numbers.js"></script>
+        <script src="/Party.js"></script>
+        <script src="/Actions.js"></script>
+        <script src="/SpeechBubbles.js"></script>
+        <script src="/Battle.js"></script>
+        <script src="/Animation.js"></script>
+        <script src="/PlayerApp.js"></script>
+        <script src="/ClassJobs.js"></script>
+        <script src="/ClassJobsApp.js"></script>
+        <script src="/Enemies.js"></script>
+        <script src="/EnemiesApp.js"></script>
+        <script src="/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+monolog:
+    handlers:
+        console:
+            type:   console
+            process_psr_3_messages: false
+            channels: ["!event", "!doctrine", "!console"]
+            max_files: 10

@@ -1,0 +1,31 @@
+.GameGCD {
+    color: #888;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 1px;
+    display: none;
+}
+.GameTitle {
+    margin-bottom: 15px;
+}
+.GameProgress {
+    width: 500px;
+    margin: 0 auto;
+    background-color: #000;
+    text-align: left;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #000;
+}
+.GameProgress > span {
+    display: inline-block;
+    height: 10px;
+    box-shadow: inset 0 0 3px 1px #f8ff83, 0 2px 5px #000;
+
+    background: #ffbb00; /* Old browsers */
+    background: -moz-linear-gradient(left,  #ffbb00 0%, #f97c00 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #ffbb00 0%,#f97c00 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #ffbb00 0%,#f97c00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbb00', endColorstr='#f97c00',GradientType=1 ); /* IE6-9 */
+}

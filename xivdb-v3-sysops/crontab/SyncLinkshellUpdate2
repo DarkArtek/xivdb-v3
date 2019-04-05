@@ -1,0 +1,12 @@
+#
+# SyncLinkshellUpdate2 (21,22,23,24)
+#
+
+# Linkshell updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_update 21-Linkshell > /home/xivdb/logs/linkshells_update_21.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_update 22-Linkshell > /home/xivdb/logs/linkshells_update_22.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_update 23-Linkshell > /home/xivdb/logs/linkshells_update_23.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_update 24-Linkshell > /home/xivdb/logs/linkshells_update_24.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

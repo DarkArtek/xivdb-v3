@@ -1,0 +1,10 @@
+#
+# Microsites: Search
+#
+
+# Search
+server {
+    server_name ms.search.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-search/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}

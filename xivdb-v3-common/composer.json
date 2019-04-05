@@ -1,0 +1,13 @@
+{
+    "name": "xivdb/xivdb-v3-common",
+    "type": "library",
+    "description": "Common Libraries for XIVDB MicroServices",
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "XIVCommon\\": "src/"
+        }
+    }
+}

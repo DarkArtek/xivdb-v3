@@ -1,0 +1,66 @@
+#
+# Microsites: Mognet, Feedback, Monitor, Translations, Screenshots, Comments, Pages, Email, DevApps
+#
+
+# Mognet
+server {
+    server_name ms.mognet.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-mognet/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Feedback
+server {
+    server_name ms.feedback.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-feedback/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Monitor
+server {
+    server_name ms.monitor.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-monitor/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Translations
+server {
+    server_name ms.translations.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-translations/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Screenshots
+server {
+    server_name ms.screenshots.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-screenshots/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Comments
+server {
+    server_name ms.comments.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-comments/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Pages
+server {
+    server_name ms.pages.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-pages/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Email
+server {
+    server_name ms.email.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-email/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# DevApps
+server {
+    server_name ms.devapps.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-devapps/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}

@@ -1,0 +1,24 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <p><strong>FEEDBACK UPDATED</strong></p>
+
+    <h1>(Ref: {{ data.feedback.ref }}) {{ data.feedback.title }}</h1>
+
+    <p>The following piece of feedback has had an update.</p>
+
+    <p>History of updates:</p>
+    <ul>
+        {% for line in data.feedback.history %}
+        <li>{{ line }}</li>
+        {% else %}
+        <li><i>No events recorded.</i></li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        <strong>URL:</strong> <a href="https://xivdb.com/issues/{{ data.feedback.id }}" target="_blank">View this feedback on XIVDB.</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+    "name": "xivdb/xivdb-v3-sdk",
+    "type": "library",
+    "description": "SDK for XIVDB MicroServices",
+    "require": {
+        "php": "^7.1",
+        "guzzlehttp/guzzle": "~6.0",
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "XIV\\": "src/"
+        }
+    }
+}

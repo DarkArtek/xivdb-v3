@@ -1,0 +1,34 @@
+{% extends 'base/frontend.twig'  %}
+
+{% block body %}
+<div class="page">
+
+    <div class="home">
+
+        <div>
+            {% include 'home/left.twig' %}
+        </div>
+        <div>
+
+            <div class="home-main">
+                <div>
+                {% include 'home/lodestone.twig' %}
+                </div>
+                <div>
+                    <p>A collection of stuff based on XIVDB</p>
+                    - Screenshots<br>
+                    - Comments<br>
+                    - Achievement Rank Changes<br>
+                    - Feast changes<br>
+                    - Deep Dungeon changes<br>
+                    - XIVDB News<br>
+                    - Steamers going live<br>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

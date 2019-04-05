@@ -1,0 +1,71 @@
+{
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "aws/aws-sdk-php": "^3.48",
+        "jms/serializer": "^1.10",
+        "nesbot/carbon": "^1.22",
+        "php-amqplib/php-amqplib": "^2.7",
+        "ramsey/uuid": "^3.7",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/console": "^4.0",
+        "symfony/flex": "^1.0",
+        "symfony/framework-bundle": "^4.0",
+        "symfony/lts": "^4@dev",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/orm-pack": "^1.0",
+        "symfony/profiler-pack": "^1.0",
+        "symfony/twig-bundle": "^4.0",
+        "symfony/web-server-bundle": "^4.0",
+        "symfony/webpack-encore-pack": "^1.0",
+        "symfony/yaml": "^4.0",
+        "viion/lodestone-php": "^1.7",
+        "xivdb/xivdb-v3-common": "dev-master"
+    },
+    "require-dev": {
+        "symfony/dotenv": "^4.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@bitbucket.org:ffxiv/xivdb-v3-common.git"
+        }
+    ],
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "extra": {
+        "symfony": {
+            "id": "01C0K5F5S5AZD0BF9BR9MAZE5Y",
+            "allow-contrib": false
+        }
+    }
+}

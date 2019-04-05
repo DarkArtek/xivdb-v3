@@ -1,0 +1,12 @@
+#
+# SyncFreeCompanyUpdate1 (11,12,13,14)
+#
+
+# FreeCompany updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_update 11-FreeCompany > /home/xivdb/logs/freecompany_update_11.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_update 12-FreeCompany > /home/xivdb/logs/freecompany_update_12.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_update 13-FreeCompany > /home/xivdb/logs/freecompany_update_13.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_update 14-FreeCompany > /home/xivdb/logs/freecompany_update_14.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

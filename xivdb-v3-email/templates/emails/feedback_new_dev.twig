@@ -1,0 +1,29 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <p><strong>FEEDBACK</strong></p>
+
+    <h1>(Ref: {{ data.feedback.ref }}) {{ data.feedback.title }}</h1>
+
+    <p>{{ data.feedback.message }}</p>
+    <p>- By: {{ email.email }}</p>
+    <p><small>REF: {{ data.feedback.ref }}</small></p>
+
+    <p>
+        <strong>URL:</strong> <a href="https://xivdb.com/issues/{{ data.feedback.id }}" target="_blank">{{ data.feedback.id }}</a>
+    </p>
+
+    <h3>Extra data</h3>
+
+    {% if data.feedback.data %}
+    <ul>
+        {% for info in data.feedback.data %}
+        <li>{{ info }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No extra data attached to the feedback.</p>
+    {% endif %}
+
+{% endblock %}

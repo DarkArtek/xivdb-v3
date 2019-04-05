@@ -1,0 +1,60 @@
+.SpeechBubbles {
+    position: absolute;
+    top: 30px; left: 0;
+    z-index: 10;
+    line-height: 22px;
+    pointer-events: none;
+}
+.SpeechPlayer,
+.SpeechEnemy,
+.SpeechSystem {
+    width: 500px;
+    height: 150px;
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #000;
+    font-family: var(--fancy-font-two);
+    font-weight: 600;
+    font-size: 26px;
+    position: relative;
+    display: none;
+    transform: scale(0.8);
+}
+.SpeechPlayer span,
+.SpeechEnemy span,
+.SpeechSystem span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5px;
+    width: 420px;
+    line-height: 34px;
+}
+.SpeechSystem span {
+    margin-top: -10px;
+    color: #fff;
+}
+.SpeechEnemy span {
+    margin-top: -15px;
+}
+.SpeechPC {
+    width: 500px;
+    height: 220px;
+    background-size: 500px auto;
+    background-repeat: no-repeat;
+    text-align: left;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    display: none;
+}
+.SpeechPC span {
+    position: absolute;
+    top: 115px;
+    left: 170px;
+    width: 280px;
+    height: 75px;
+}

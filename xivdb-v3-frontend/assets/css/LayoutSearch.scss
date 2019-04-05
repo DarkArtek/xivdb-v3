@@ -1,0 +1,267 @@
+.sea {
+    padding: 30px;
+    border-bottom: solid 1px #222;
+    background-color: #000;
+    display: none;
+
+    &.on {
+        display: flex;
+    }
+
+    > div:first-of-type {
+        width: 300px;
+    }
+
+    > div:last-of-type {
+        flex: 0 1 calc(100% - 300px);
+        padding-left: 20px;
+    }
+}
+
+.sea-load {
+    position: fixed;
+    z-index: 50;
+    height: 5px;
+    background-color: var(--blue);
+    width: 0;
+    opacity: 0;
+    left: 0; right: 0;
+    top: 50px;
+
+    &.sea-load-on {
+        width: 100%;
+        opacity: 1;
+        transition: 2.5s;
+    }
+}
+
+.sea-fil {
+    background-color: var(--darkText);
+    border-radius: 5px;
+    overflow: hidden;
+
+    .sea-menu {
+        display: flex;
+        border-bottom: solid 1px #000;
+        box-shadow: 0 1px 10px #111;
+
+        > button {
+            flex: 0 1 50%;
+            border-radius: 0;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        }
+    }
+
+    .sea-block {
+        display: none;
+        padding: 15px;
+
+        &.on {
+            display: block;
+        }
+
+        hr {
+            border-top: 2px solid #000;
+            margin: 10px -15px;
+        }
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        color: #666;
+    }
+
+    h2 {
+        text-align: center;
+        color: var(--highlight);
+        margin-bottom: 0;
+
+        span {
+            text-shadow: 0 0 5px var(--highlight);
+        }
+
+        small {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 2px;
+            opacity: 0.5;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-weight: 600;
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.sea-top {
+    background-color: var(--darkText);
+    border: solid 1px var(--darkText);
+    box-shadow: 0 1px 10px #111;
+    border-radius: 4px;
+    padding: .375rem .75rem;
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    .sea-results, .sea-pages {
+        color: var(--highlight);
+        font-weight: 700;
+    }
+
+    .sea-ms {
+        opacity: 0.5;
+        font-size: 14px;
+    }
+}
+
+.sea-res {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    //align-items: flex-start;
+    align-self: flex-start;
+
+    > .alert {
+        width: 100%;
+    }
+
+    > .sea-res-row {
+        flex: 0 1 calc(25% - 10px);
+        margin: 0 10px 10px 0;
+        display: flex;
+        background-color: var(--dark);
+        border-radius: 5px;
+        overflow: hidden;
+        line-height: 20px;
+
+        &:hover {
+            background-color: var(--darkText);
+        }
+
+        @include mq($until: desktopMax) {
+            flex: 0 1 calc(33% - 10px);
+        }
+
+        @include mq($until: desktop) {
+            flex: 0 1 calc(50% - 10px);
+        }
+
+        @include mq($until: tablet) {
+            flex: 0 1 100%;
+        }
+
+        // 4k
+        @include mq($from: max) {
+            flex: 0 1 calc(20% - 10px);
+        }
+
+        // icon
+        > div:first-of-type {
+            flex: 0 1 84px;
+            width: 84px;
+            min-height: 84px;
+            position: relative;
+            overflow: hidden;
+
+            img.sea-img-1 {
+                max-height: 92px;
+                max-width: 92px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+            }
+
+            img.sea-img-2 {
+                filter: blur(30px);
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+        }
+
+        &.sea-res-Achievement > div:first-of-type img.sea-img-1,
+        &.sea-res-Emote > div:first-of-type img.sea-img-1 {
+            border-radius: 6px;
+        }
+
+        // data
+        > div:last-of-type {
+            padding: 5px 5px 5px 12px;
+            flex: 0 1 calc(100% - 84px);
+            align-self: center;
+
+            a {
+                display: block;
+                font-size: 16px;
+                color: var(--faint);
+
+                em {
+                    font-style: normal;
+                    font-weight: 600;
+                    color: var(--highlight);
+                }
+            }
+
+            small {
+                font-size: 12px;
+                color: #666;
+                line-height: 16px;
+            }
+        }
+    }
+
+    > .sea-page {
+        display: block;
+        flex: 0 1 100%;
+        margin: 10px 0 20px 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #666;
+        font-weight: 600;
+        border-bottom: solid 1px #222;
+    }
+}
+
+.sea-results,
+.sea-pages {
+    > small {
+        display: block;
+        color: #888;
+    }
+
+    > span {
+        font-size: 22px;
+        color: var(--highlight);
+    }
+}
+
+.sea-more {
+    display: block;
+
+    &.off {
+        display: none;
+    }
+}
+
+.sea-more {
+    margin-top: 5px;
+    text-align: center;
+
+    > button {
+        padding: .375rem 1.75rem;
+    }
+}

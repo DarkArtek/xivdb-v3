@@ -1,0 +1,24 @@
+<div style="margin:0 auto;max-width:720px;">
+
+    <div style="text-align:center; padding: 30px 0 10px 0;">
+        <img src="https://xivdb.com/mail/logo_raster.png" height="64">
+    </div>
+
+    <br><br>
+
+    <div style="margin:10px 20px;font-size:16px;">
+        {% block body %}{% endblock %}
+    </div>
+
+    <br><br>
+
+    <div style="color:#666;font-size:12px;margin:0 20px;">
+        <a href="https://xivdb.com" style="color:#666;">xivdb.com</a>
+
+        {% if email is defined %}
+            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="http://xivdb.com/mail/unsubscribe/{{ email.hash }}" style="color:#666;">unsubscribe</a>
+        {% endif %}
+    </div>
+
+</div>

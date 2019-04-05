@@ -1,0 +1,111 @@
+{% extends "support/index.twig"  %}
+
+{% set page = '' %}
+
+{% block subbody %}
+
+    {% if Issue %}
+        {% if Issue.private and not auth.user.moderator %}
+            <div class="alert alert-danger">You do not have permission to view this support issue.</div>
+        {% else %}
+
+            <div class="alert alert-secondary">
+                <span class="badge badge-success">{{ Issue.status|upper }}</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <strong>{{ Issue.category }}</strong>
+                &nbsp;&nbsp;-&nbsp;&nbsp;
+                Posted: {{ Issue.added|dateRelative }}
+                &nbsp;&nbsp;-&nbsp;&nbsp;
+                Updated: {{ Issue.updated|dateRelative }}
+            </div>
+
+            {% if auth.user and auth.user.moderator %}
+            <div class="alert alert-dark">
+                <div><small class="text text-danger">USER INFORMATION</small></div>
+                <strong>{{ Issue.user.username|title }} ({{ Issue.user.sso|title }})</strong>
+                - {{ Issue.user.banned ? 'This user is banned' : 'Not banned' }}
+                - {{ Issue.user.notes ?: 'No notes on this user' }}
+            </div>
+            {% endif %}
+
+            {% if Issue.waiting %}
+            <div class="alert alert-notice">
+                Waiting for a response from the author
+            </div>
+            {% endif %}
+
+            <div class="sup-msg">
+                {{ Issue.ref }} {{ Issue.message }}
+            </div>
+
+            <hr>
+
+            {# comments #}
+
+            {% if app.session.flashbag.get('feedback_comment_new') %}
+            <div class="alert alert-success">Your reply to this issue was posted</div>
+            {% endif %}
+
+            {% if app.session.flashbag.get('feedback_comment_deleted') %}
+                <div class="alert alert-success">Your comment was deleted</div>
+            {% endif %}
+
+            {% if auth.user %}
+                <form method="post" class="sup-cmt-form" action="{{ path('issues_comment', { id: Issue.id}) }}">
+                    <div class="form-group">
+                        <label for="sComment">Post a response</label>
+                        <textarea name="sComment" id="sComment" class="form-control" aria-describedby="sComment"></textarea>
+                        <small id="emailHelp" class="form-text text-muted">All subscribed users to this issue will receive a notification</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            {% else %}
+                <div class="alert alert-info">
+                    You must be logged in to reply to feedback.
+                </div>
+            {% endif %}
+
+            {% for cmt in Issue.comments %}
+            <div class="sup-cmt sup-cmt-{{ loop.index }}">
+                <div>
+                    <img src="{{ cmt.user.avatar }}" height="64">
+                </div>
+                <div>
+                    <div>
+                        <span class="text-highlight">{{ cmt.user.username|title }}</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <small>{{ cmt.added|dateRelative }}</small>
+                        <div class="fr">
+                            {% if auth.user.id == cmt.user.id %}
+                            <a href="{{ path('issues_comment_delete', { id: Issue.id, commentId: cmt.id }) }}" class="btn btn-sm btn-outline-danger">DELETE</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div>
+                        {{ cmt.message }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <hr>
+
+            {# updates #}
+            <table class="table table-striped table-dark">
+                {% for entry in Issue.history %}
+                <tr>
+                    <td>{{ entry }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        {% endif %}
+    {% else %}
+        <div class="alert alert-danger">
+            Sorry, this issue could not be found. Either it has been deleted or
+            you have randomly stumbled upon this page! Try going back to the issues list on the left
+            and re-find the post you are looking for.
+        </div>
+    {% endif %}
+
+{% endblock %}

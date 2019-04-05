@@ -1,0 +1,15 @@
+html, body {
+    background-color: #0c0c0c;
+    height: 100%;
+}
+
+main {
+    min-height: 100%;
+    position: relative;
+    padding-top: 50px;
+    margin-bottom: -80px;
+
+    .site {
+        padding-bottom: 80px;
+    }
+}

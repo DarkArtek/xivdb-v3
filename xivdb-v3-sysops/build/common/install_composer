@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+#
+# Common script for installing composer (globally)
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: Composer"
+echo ""
+
+echo "- downloading composer"
+sudo curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+sudo chmod +x /usr/local/bin/composer
+
+echo "- creating memory swap"
+# to fix: https://getcomposer.org/doc/articles/troubleshooting.md#proc-open-fork-failed-errors
+# Add a memory swap
+sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+sudo /sbin/mkswap /var/swap.1
+sudo /sbin/swapon /var/swap.1
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"

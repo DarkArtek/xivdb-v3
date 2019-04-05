@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#
+# Common script for installing Redis + PHP-Redis
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: Redis"
+echo ""
+
+# Redis
+echo "- install redis-server"
+sudo apt-get install redis-server -y
+
+# move back
+cd ~/xivdb-v3-sysops
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: Redis"
+echo ""
+
+# PHP Redis
+echo "- clone php-redis"
+cd ~/xivdb-v3-sysops
+git clone https://github.com/phpredis/phpredis.git
+cd phpredis
+
+# build and install
+echo "Install: PHP Redis"
+echo "- building php-redis, this will take some time ...."
+sudo phpize
+sudo ./configure
+sudo make
+sudo make install
+cd ..
+sudo rm -rf ~/xivdb-v3-sysops/phpredis
+
+sudo echo "extension=redis.so" > /etc/php/7.2/mods-available/redis.ini
+sudo ln -sf /etc/php/7.2/mods-available/redis.ini /etc/php/7.2/fpm/conf.d/20-redis.ini
+sudo ln -sf /etc/php/7.2/mods-available/redis.ini /etc/php/7.2/cli/conf.d/20-redis.ini
+
+# move back
+cd ~/xivdb-v3-sysops
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"

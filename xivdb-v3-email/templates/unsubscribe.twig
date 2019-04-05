@@ -1,0 +1,53 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
+
+    <style>
+        html, body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            line-height: 24px;
+        }
+        h1 {
+            font-weight: 300;
+            font-size: 42px;
+        }
+        small {
+            color: #ccc;
+        }
+    </style>
+
+    <div align="center">
+        <h1>unsubscribed</h1>
+        <small><i>You don't pay my sub!</i></small>
+    </div>
+
+    <br><br>
+
+    <p>
+        You will no longer receive common emails from XIVDB, this includes:
+    </p>
+
+    <ul>
+        <li>Weekly character, free company and linkshell updates</li>
+        <li>Site notifications</li>
+        <li>Admin related emails</li>
+    </ul>
+
+    <p>
+        You will still receive important account emails such as password resets or alerts. If you wish
+        to re-enable emails please go into your XIVDB Account Settings to manage your email
+        preferences.
+    </p>
+
+    <p>
+        <i>Take care Kupo!</i>
+    </p>
+
+    <br>
+
+{% endblock %}

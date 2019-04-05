@@ -1,0 +1,80 @@
+{% extends "account/index.twig"  %}
+
+{% set page = 'account_characters' %}
+
+{% block subbody %}
+
+    <h2><strong>Settings:</strong> {{ character.name }}</h2>
+
+    {% if app.session.flashbag.get('character_settings_updated') %}
+        <br>
+        <div class="alert alert-success alert-success-pop">
+            Character settings have been updated
+        </div>
+    {% endif %}
+
+    <p>Here you can customize the settings for your character.</p>
+
+    <hr>
+
+    <div class="acc-form">
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <h4>Tracking</h4>
+            {{ form_row(form.stopUpdating) }}
+
+            <hr>
+
+            <h4>Privacy</h4>
+            <p>Control who can see your character, and what information is available.</p>
+            <div class="alert alert-warning">
+                These settings do not affect your Lodestone profile where your information is always public.
+            </div>
+
+            {{ form_row(form.hidden) }}
+            {{ form_row(form.hiddenClassJobs) }}
+            {{ form_row(form.hiddenGearsets) }}
+            {{ form_row(form.hiddenEvents) }}
+            {{ form_row(form.hiddenTracking) }}
+            {{ form_row(form.hiddenCollectables) }}
+            {{ form_row(form.hiddenAchievements) }}
+            {{ form_row(form.hiddenFriends) }}
+
+            <br>
+
+            {{ form_row(form.save) }}
+        {{ form_end(form) }}
+    </div>
+
+    <hr>
+
+    <h3 class="text-danger">Delete Data</h3>
+    <p>
+        You cannot delete your character out-right as anyone could re-add your character back onto
+        the site at anytime, this is because your character is always visible on The Lodestone.
+        You can use the privacy options above to hide your character and the choices below to
+        delete various bits of information that XIVDB has on your character.
+        <strong class="text-warning">All deletions are final and cannot be reversed</strong>
+    </p>
+
+    <table class="table table-bordered table-dark acc-char-list">
+        <tr>
+            <td>
+                Class/Job Experience Points and Levels on your profiles timeline
+            </td>
+            <td class="tar">
+                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Your profile tracking data, such as name, server and other profile changes.
+            </td>
+            <td class="tar">
+                <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}

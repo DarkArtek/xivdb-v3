@@ -1,0 +1,18 @@
+#
+# SyncCharacterUpdate4 (41,42,43,44)
+#
+
+# Character updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 41-Characters > /home/xivdb/logs/characters_update_41.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 42-Characters > /home/xivdb/logs/characters_update_42.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 43-Characters > /home/xivdb/logs/characters_update_43.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 44-Characters > /home/xivdb/logs/characters_update_44.log
+
+# Friends update
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends 41-Characters > /home/xivdb/logs/characters_friends_41.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends 42-Characters > /home/xivdb/logs/characters_friends_42.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends 43-Characters > /home/xivdb/logs/characters_friends_43.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends 44-Characters > /home/xivdb/logs/characters_friends_44.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

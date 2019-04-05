@@ -1,0 +1,12 @@
+#
+# SyncAchievementUpdate3 (31,32,33,34)
+#
+
+# Achievement updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements 31-Achievements > /home/xivdb/logs/characters_achievements_31.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements 32-Achievements > /home/xivdb/logs/characters_achievements_32.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements 33-Achievements > /home/xivdb/logs/characters_achievements_33.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements 34-Achievements > /home/xivdb/logs/characters_achievements_34.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

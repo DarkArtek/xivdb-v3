@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+#
+# Common script for installing ElasticSearch
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: JAVA (512MB)"
+echo ""
+
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+echo debconf shared/accepted-oracle-license-v1-1 select true | \sudo debconf-set-selections
+echo debconf shared/accepted-oracle-license-v1-1 seen true | \sudo debconf-set-selections
+sudo sudo apt-get -y install oracle-java8-installer
+export _JAVA_OPTIONS="-Xmx800m -Xms800m"
+
+
+# Install elastic
+echo ""
+echo "Install: ElasticSearch 5.2"
+echo ""
+
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
+sudo dpkg -i elasticsearch-5.2.0.deb
+sudo update-rc.d elasticsearch defaults
+sudo sed -i 's|-Xms2g|-Xms800m|' /etc/elasticsearch/jvm.options
+sudo sed -i 's|-Xmx2g|-Xmx800m|' /etc/elasticsearch/jvm.options
+# sudo service elasticsearch start
+#sudo update-rc.d elasticsearch defaults 95 10
+#sudo /etc/init.d/elasticsearch start
+sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable elasticsearch.service
+sudo /bin/systemctl start elasticsearch.service
+
+
+# remove elastic
+sudo rm ./elasticsearch-5.2.0.deb
+echo "------------------------------------------------------------------------------------"

@@ -1,0 +1,234 @@
+.ActivePlayerCursor {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    animation: BounseCursor 1s infinite;
+    transition: .3s;
+    display: none;
+}
+@keyframes BounseCursor {
+    0% {
+        margin-top: 0;
+    }
+    50% {
+        margin-top: -5px;
+    }
+    100% {
+        margin-top: 0;
+    }
+}
+.ActiveEnemyCursor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    animation: SpinCursor 1s infinite;
+    animation-timing-function: linear;
+    display: none;
+    height: 100px;
+}
+@keyframes SpinCursor {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.PartyWindow {
+    display: none;
+    font-family: var(--fancy-font-two);
+    width: 1100px; height: 640px;
+    position: absolute;
+    z-index: 3;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-image: url(/img/ui-normal.png);
+    background-position: center;
+    border: solid 1px #000;
+    box-shadow: 0 0 10px #000;
+    padding: 30px;
+    border-radius: 10px;
+    text-shadow: 0 1px 2px #000;
+    overflow: hidden;
+}
+.PartyWindow h1 {
+    margin-bottom: 30px;
+}
+.PartyWindow h1 {
+    font-size: 26px;
+    display: inline-block;
+    color: #fff;
+}
+.PartyWindow h1 small {
+    display: inline-block;
+    margin-left: 40px;
+    font-size: 18px;
+    color: #ffaa98;
+}
+.PartySelection {
+    display: flex;
+}
+.PartySelection > div:first-of-type {
+    flex: 0 0 250px;
+}
+.PartySelection .PartySelectionContainer {
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+.PartySelection .PartySelectionContainer > div:last-of-type {
+    margin-bottom: 0;
+}
+.PartySelection > div:last-of-type {
+    flex: 0 0 calc(100% - 250px);
+    padding-left: 60px;
+}
+.PartySelection > div .PartyMember {
+    position: relative;
+    font-family: var(--fancy-font-one);
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #fff;
+
+    line-height: 42px;
+    height: 42px;
+}
+.PartySelection > div .PartyMember img.RoleIcon {
+    vertical-align: top;
+    margin: 0 8px 0 0;
+}
+.PartySelection > div .PartyMember .btn {
+    position: absolute;
+    right: 0;
+    top: 5px;
+}
+.PartyFooter {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background-color: #222;
+    border-top: solid 1px #000;
+}
+.PartyFooter > div {
+    flex: 0 1 50%;
+}
+.PartyFooter > div:last-of-type {
+    text-align: right;
+}
+.PartyRole {
+    position: relative;
+    display: inline-block;
+    background-color: #555;
+    border: solid 1px #000;
+    box-shadow: 0 2px 0 #000;
+    border-radius: 5px;
+    width: 210px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 45px 40px 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
+}
+.PartyRole:hover {
+    background-color: #1694ff;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #000;
+}
+.PartySelection > div:last-of-type > div:nth-child(3n) {
+    margin: 0 0 30px 0;
+}
+.PartyRole .PartyRoleSprite {
+    position: absolute;
+    top: -25px;
+    left: -40px;
+}
+.PartyRole .PartyRoleType {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+}
+.PartyRole span {
+    display: block;
+    padding: 0 0 0 50px;
+}
+.PartyList {
+    position: absolute;
+    right: 55px;
+    top: 30px;
+    width: 320px;
+    height: 260px;
+    text-shadow: 0 1px 3px #000;
+    padding: 20px;
+
+    background-image: url(/img/ptbg.png);
+    background-size: 100% 100%;
+    opacity: 0;
+}
+
+.PartyList > div {
+    margin-bottom: 10px;
+    display: flex;
+    text-align: right;
+    opacity: 0;
+}
+
+.PartyList > div > div:last-of-type {
+    flex: 0 1 70px;
+    text-align: right;
+}
+.PartyList > div > div:first-of-type {
+    flex: 0 1 230px;
+    text-align: right;
+}
+.PartyList .HealthDisplay {
+    margin-left: 10px;
+    margin-top: 6px;
+    text-align: left;
+}
+.PartyList .HealthBar {
+    display: inline-block;
+    background-color: #000;
+    box-shadow: 0 0 2px #000;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+}
+.PartyList .HealthBar span {
+    display: inline-block;
+    background-color: #59df90;
+    height: 8px;
+    transition: 1s;
+}
+.PartyNameBar {
+    position: relative;
+    font-family: var(--fancy-font-one);
+    text-transform: uppercase;
+    font-size: 22px;
+}
+.PartyNameBar span {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+.PartyNameText {
+    font-size: 18px;
+    padding-top: 4px;
+}

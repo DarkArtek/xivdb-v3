@@ -1,0 +1,75 @@
+{% extends'base.html.twig' %}
+
+{% block body %}
+
+    <p>Requires jQuery</p>
+    <p>- https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <p>Uploaders:</p>
+
+
+    <div class="xivdb-screenshots" id="item:1675"></div>
+    <script>
+    // let MS_SCREENSHOTS_ENDPOINT = 'https://data.ms.xivdb.com/';
+    // let MS_SCREENSHOTS_ENDPOINT = 'http://data.ms.xivdb.local/';
+    let MS_SCREENSHOTS_ENDPOINT = 'http://ms.screenshots.xivdb-staging.com';
+    
+    let MS_SCREENSHOTS = {
+        uploadStart: () => {
+            $('.xivdb-screenshots-fields').removeClass('active');
+            $('.xivdb-screenshots-state').addClass('active');
+        },
+        uploadError: (response, code, message) => {
+            console.log('error: ', response, code, message);
+        },
+        uploadSuccess: response => {
+            console.log('success: ', response);
+        },
+        uploadComplete: () => {
+            $('.xivdb-screenshots-fields').addClass('active');
+            $('.xivdb-screenshots-state').removeClass('active');
+            console.log('complete');
+        },
+        uploadProgress: response => {
+            console.log('progress: ', response);
+            $('.xivdb-screenshots-progress span').css('width', response.response + '%');
+        },
+        uploadLoad: response => {
+            console.log('load: ', response);
+        },
+        listSuccess: response => {
+            console.log('list: ', response);
+        },
+        listError: (response, code, message) => {
+            console.log('error: ', response, code, message);
+        },
+        listComplete: () => {
+            console.log('complete');
+        },
+        listRendering: () => {
+            console.log('rendering');
+        },
+        listEmpty: () => {
+            console.log('empty!!');
+        },
+        deleteSuccess: response => {
+            console.log('delete success');
+        },
+        deleteError: (response, code, message) => {
+            console.log('error: ', response, code, message);
+        },
+        deleteComplete: () => {
+            console.log('complete');
+        }
+    }
+    </script>
+
+
+    <br><br><hr><br><br>
+
+    <p>list</p>
+
+    <div class="xivdb-screenshots-list" id="item:1675"></div>
+
+{% endblock %}

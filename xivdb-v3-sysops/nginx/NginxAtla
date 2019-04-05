@@ -1,0 +1,10 @@
+#
+# Microsites: Sync
+#
+
+# Sync
+server {
+    server_name ms.sync.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-sync/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}

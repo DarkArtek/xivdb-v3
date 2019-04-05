@@ -1,0 +1,22 @@
+{% extends 'base/frontend.twig'  %}
+
+{% block title %}{{ Patch.Name }}{% endblock %}
+
+{% block body %}
+<div class="container container-page">
+    {% if Patch.Banner %}
+    <div align="center">
+        <img src="{{ Patch.Banner }}">
+    </div>
+    {% endif %}
+    <h1>{{ Patch.Name }}</h1>
+    <div class="alert alert-secondary">
+        <strong>{{ Patch.ExVersion.Name|upper }}</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        Release Date: <strong>{{ Patch.ReleaseDate|date('l jS F, Y') }}</strong>
+        <span class="fr">{{ Patch.ID }}</span>
+    </div>
+    <br>
+    <p>Data data data</p>
+</div>
+{% endblock %}

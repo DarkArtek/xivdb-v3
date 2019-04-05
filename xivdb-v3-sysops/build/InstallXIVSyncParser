@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#
+# Install script for A Lodestone XIVSync server
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP LODESTONE XIVSYNC PARSER"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+
+# Composer
+source ./build/common/install_composer
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivsync.git
+
+
+#
+# Setup
+#
+
+cd ~/xivsync && composer install && cp ~/xivsync/.env.dist ~/xivsync/.env
+
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "------------------------------------------------------------------------------------"
+echo ""
+echo "Enabling git config credential store"
+git config --global credential.helper store
+
+echo ""
+echo "You will be asked for your git credentials for a git pull on xivdb-v3-sysops"
+cd ~/xivdb-v3-sysops
+git pull
+echo ""
+echo "Git login saved"
+echo "------------------------------------------------------------------------------------"

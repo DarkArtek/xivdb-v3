@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+#
+# Common script for installing
+# DigitalOcean's Monitoring utilities
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: DO Monitoring"
+echo ""
+
+sudo curl -sSL https://agent.digitalocean.com/install.sh | sh
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"

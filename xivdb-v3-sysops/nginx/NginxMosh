@@ -1,0 +1,10 @@
+#
+# Microsites: API
+#
+
+# API
+server {
+    server_name api.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-api/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}

@@ -1,0 +1,57 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <div align="center"><h1>SYNC SERVERS</h1></div>
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        {% for name, list in stats %}
+                            <th>{{ name|upper }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for name, list in stats %}
+                        <td>
+                            {% for server in list %}
+                            <code>{{ server.name }}</code>
+                            <h5>{{ server.count|number_format }}</h5>
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <h3>Counters</h3>
+            <table class="table">
+                <tbody>
+                    {% for name, dates in counts %}
+                    <td>
+                        <h5><code>{{ name }}</code></h5>
+                        <table class="table table-sm table-bordered">
+                            <tbody>
+                            {% for date, count in dates|slice(0,15) %}
+                                <tr>
+                                    <td><strong>{{ count }}</strong></td>
+                                    <td>{{ date|split(' ')[1] }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

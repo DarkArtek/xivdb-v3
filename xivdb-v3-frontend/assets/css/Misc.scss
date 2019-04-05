@@ -1,0 +1,232 @@
+html, body {
+    color: #fff;
+}
+
+h1, h2 {
+    font-weight: 300;
+}
+
+// Docs and such
+pre {
+    background-color: var(--dark);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 30px 0;
+
+    code {
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: pre-wrap;
+
+        color: var(--highlighter);
+    }
+}
+
+// Remove the ugly default X on search inputs
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+// Remove auto-complete colour
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+a {
+    color: var(--blue);
+
+    &:hover, &:focus {
+        color: var(--blue);
+    }
+}
+
+.fr {
+    float: right;
+}
+
+.tar {
+    text-align: right;
+}
+
+//
+// Bootstrap tweaks
+//
+
+.btn-loader-icon {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.alert p {
+    margin: 0;
+}
+
+.container{
+    @include mq($until: desktopMax) {
+        max-width: 100%;
+    }
+
+    @include mq($from: desktopMax) {
+        max-width: 1400px;
+    }
+}
+
+.container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.alert-secondary hr {
+    margin: 30px -25px;
+    border-top: 2px solid rgba(0,0,0,.1);
+    border-top-color: var(--dark);
+}
+
+.text-highlight {
+    color: var(--highlight);
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.alert-success-pop {
+    animation-name: popGreen;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+.alert-dark {
+    background-color: var(--dark);
+    border: solid 1px var(--dark);
+    color: var(--faint);
+}
+
+.alert-secondary {
+    background-color: var(--darkText);
+    border: solid 1px var(--darkText);
+    color: var(--faint);
+}
+
+/* The animation code */
+@keyframes popGreen {
+    0% {
+        box-shadow: 0 0 0 0 rgba(53, 175, 54, 0);
+    }
+    10% {
+        box-shadow: 0 0 0 2px rgba(53, 175, 54, 1);
+    }
+    20% {
+        box-shadow: 0 0 0 5px rgba(53, 175, 54, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(53, 175, 54, 0);
+    }
+}
+
+.card {
+    color: var(--dark);
+}
+
+.box .card hr,
+.card hr {
+    border-top: 2px solid #ddd;
+    margin: 20px -20px;
+}
+
+.btn-indigo {
+    color: #fff;
+    background-color: var(--indigo);
+    border-color: var(--indigo);
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.btn-purple {
+    color: #fff;
+    background-color: var(--purple);
+    border-color: var(--purple);
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.btn-orange {
+    color: #fff;
+    background-color: var(--orange);
+    border-color: var(--orange);
+
+    &:hover {
+        color: #fff;
+    }
+}
+
+.btn-white {
+    color: var(--dark);
+    background-color: var(--white);
+    border-color: var(--white);
+
+    &:hover {
+        color: var(--dark);
+    }
+}
+
+.btn-teal {
+    color: var(--dark);
+    background-color: var(--teal);
+    border-color: var(--teal);
+
+    &:hover {
+        color: var(--dark);
+    }
+}
+
+//
+// Random pages
+//
+
+.api-docs {
+    h2 {
+        margin-top: 50px;
+    }
+
+    h2 code {
+        display: block;
+        background-color: #000;
+        margin: 15px -30px;
+        padding: 15px 30px;
+    }
+
+    h3 code {
+        display: block;
+        color: var(--yellow);
+        padding: 10px 0;
+    }
+}
+
+.banned {
+    margin: 100px auto 0 auto;
+    text-align: center;
+    width: 600px;
+
+    .box {
+        text-align: left;
+        font-size: 18px;
+
+        .banned-time {
+            color: var(--highlight);
+            font-size: 20px;
+        }
+    }
+}

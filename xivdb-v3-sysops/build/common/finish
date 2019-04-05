@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+#
+# Common finish up script
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Deleting www-data user"
+sudo deluser www-data
+
+echo "------------------------------------------------------------------------------------"
+echo "Adding SSH Key"
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCxmv6GVFkDXFBkgE6nI884k62Bd7XqgNl/aYgm4+jzgrjtwnm+Ss0aeo9Vd+ls9a7WhCW92Qbs7w3eKZCuxUzqYdblO4rdc41QmufIWlEGnzP93pY6r0Sp+XtTQywxqKX0vnaHJCKDw1Azo8MvfGZWnq7EUdbVkAF4turFlWv/0MAqFiW4JKSpEOlbM1ksQTEtfMa5o2WzZJdkcmhL0da136WbnPwRTybDX4i7zoEjCarDB8i9e+xq3jNF6yYbxWas0+zJrErOGe4RlkQt/WNcQBIMZvHW7npCNEtDXoLNGLx0rGtWAPS/JTmo8GU9+hYI224PtThVRG1HdDUn3mRQVfcD91otPAoPfweLOMq36cmKz0rQFD4aqkiel+EFs1lH2B8GVAIplRg+24D1m90N+lrJCQP7Yta6LLUB2AuwimAMnsS8wUIRAbvuuZYxIwxgIJsdkzencM90wQ+o3jBe7NbRuPeIQwJqBUI0WAHq2h8VOS7CDF4MAD4CHWIe+CelHi+mL8JvcGpAjqOfIMD8fCf69u1PrGC5WgXst386gFzl+w89rUqsBx/x8d7SlYoBvulORxdkzlT0rQhEAzX1N1I2zBlwkIfjvo5p6w9sOGOAW0EIQ3cqzB0BNogg2KsC/nXhuVws96VUx27ay3dPQ4L8S4zq6db+iOg7KFFEqw== josh@viion.co.uk" > home/xivdb/.ssh/authorized_keys
+
+echo "------------------------------------------------------------------------------------"
+echo ""
+echo "Restart services"
+echo ""
+sudo service php7.2-fpm restart
+sudo service nginx restart
+
+#
+# Info
+#
+echo "------------------------------------------------------------------------------------"
+echo "Checking NGINX version (this may error if you don't have NGINX installed)"
+nginx -v
+echo ""
+echo "Checking NGINX configuration (this may error if you don't have NGINX installed)"
+sudo nginx -t
+echo ""
+echo "------------------------------------------------------------------------------------"
+echo "Checking PHP Version"
+php -v
+echo ""
+echo "------------------------------------------------------------------------------------"
+echo "Checking Redis Version"
+redis-cli --version
+echo ""
+echo "------------------------------------------------------------------------------------"
+
+#
+# remove junk
+#
+sudo apt autoremove -y -qq
+
+echo ""
+echo "------------------- ALL FINISHED -------------------"
+echo ""

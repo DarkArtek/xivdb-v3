@@ -1,0 +1,543 @@
+.home {
+    display: flex;
+
+    > div:first-of-type {
+        flex: 0 1 300px;
+    }
+
+    > div:last-of-type {
+        flex: 0 1 calc(100% - 300px);
+    }
+
+    .home-main {
+        display: flex;
+
+        > div:first-of-type {
+            flex: 0 1 50%;
+            min-width: 728px + 20px;
+            padding: 0 10px;
+        }
+
+        > div:last-of-type {
+            flex: 0 1 50%;
+        }
+
+        @include mq($until: desktopMax) {
+            display: block;
+
+            > div {
+                flex: none;
+            }
+
+            > div:last-of-type {
+                padding: 0 10px;
+            }
+        }
+    }
+
+    //
+    // Lodestone Post Styles
+    //
+
+    .home-Banners {
+        text-align: center;
+        margin: 20px 0;
+
+        &.home-1 {
+            margin: 0 0 30px 0;
+        }
+
+        a {
+            display: inline-block;
+        }
+
+        img {
+            border-radius: 5px;
+            box-shadow: 0 1px 2px #000;
+            max-width: 100%;
+        }
+    }
+
+    .home-DevPosts,
+    .home-DevBlogs {
+        background-color: #1b1e2d;
+        box-shadow: 0 1px 5px #000;
+        padding: 15px 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+
+        background-image: url('/img/ui/lodestone/dev_bg_2.png');
+        background-repeat: repeat-x;
+        background-position: right top;
+        background-size: auto 240px;
+
+        &.home-1 {
+            margin: 0 0 30px 0;
+        }
+
+        // header
+        > div:first-of-type {
+            display: flex;
+            text-shadow: 0 1px 1px #000;
+
+            small {
+                font-size: 12px;
+                text-transform: uppercase;
+                display: inline-block;
+                margin-right: 5px;
+                color: var(--yellow);
+            }
+
+            span, strong {
+                display: inline-block;
+                font-size: 12px;
+                margin-right: 20px;
+                text-transform: uppercase;
+
+                a {
+                    color: var(--white);
+                }
+            }
+
+            h2 {
+                margin-top: 5px;
+                line-height: 32px;
+                font-size: 28px;
+                font-weight: 400;
+            }
+
+            > div:first-of-type {
+                flex: 0 1 64px;
+
+                img {
+                    border-radius: 5px;
+                    box-shadow: 0 1px 2px 1px #000;
+                }
+            }
+
+            > div:last-of-type {
+                flex: 0 1 calc(100% - 64px);
+                padding-left: 20px;
+            }
+        }
+
+        // body
+        > div:last-of-type {
+            padding: 15px 0;
+            word-wrap: break-word;
+            font-size: 14px;
+
+            img {
+                border-radius: 5px;
+                box-shadow: 0 1px 3px #000;
+            }
+
+            p {
+                margin: 0 0 5px 0;
+            }
+        }
+    }
+
+    .home-DevBlogs {
+        p img {
+            margin: 10px 0 !important;
+            max-height: 400px;
+            width: auto;
+        }
+    }
+
+    .home-Topics {
+        background-color: #1a2522;
+        box-shadow: 0 1px 5px 1px #000;
+        padding: 15px 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+
+        &.home-1 {
+            margin: 0 0 30px 0;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--highlight);
+            line-height: 26px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        > div:first-of-type {
+            margin-bottom: 20px;
+            margin-top: 10px;
+            text-align: center;
+
+            word-wrap: break-word;
+
+            img {
+                max-width: 60%;
+                border-radius: 5px;
+                box-shadow: 0 1px 2px #000;
+            }
+        }
+
+        > div:last-of-type {
+            font-size: 14px;
+        }
+
+        small {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.75;
+        }
+    }
+
+    .home-DevPosts {
+        background-color: #261913;
+        background-image: url('/img/ui/lodestone/dev_bg.png');
+
+        .postuseravatar {
+            display: inline-block;
+            margin: 10px 20px 10px 10px;
+        }
+
+        .bbcode_postedby img {
+            box-shadow: none;
+        }
+
+        .bbcode_quote {
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+
+        .bbcode_postedby {
+            text-transform: uppercase;
+            opacity: 0.75;
+
+            img {
+                display: none;
+            }
+        }
+    }
+
+    .home-Notices,
+    .home-Status,
+    .home-Maintenance,
+    .home-Updates {
+        display: flex;
+        margin: 5px 0;
+        background-color: #222;
+        border-radius: 5px;
+        padding: 8px;
+
+        > div:first-of-type {
+            flex: 0 1 46px;
+
+            img {
+                margin-top: 4px;
+            }
+        }
+
+        > div:last-of-type {
+            flex: 0 1 calc(100% - 46px);
+            padding-top: 3px;
+            font-size: 11px;
+
+            small {
+                text-transform: uppercase;
+                font-size: 11px;
+                font-weight: 400;
+                color: #666;
+            }
+
+            a {
+                display: block;
+                color: #aaa;
+                font-size: 15px;
+            }
+        }
+    }
+
+    .home-Notices strong {
+        color: #a7a7a7;
+    }
+
+    .home-Status strong {
+        color: #99322b;
+    }
+
+    .home-Maintenance strong {
+        color: #ccb71d;
+    }
+
+    .home-Updates strong {
+        color: #5a992c;
+    }
+
+    //
+    // Left nav
+    //
+
+    h3 {
+        color: #888;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+    }
+
+    .home-login {
+        font-size: 14px;
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .home-char1 {
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+
+        > div:first-of-type {
+            background-color: var(--primary);
+            box-shadow: 0 1px 5px #000;
+            height: 62px;
+
+            img {
+                height: 92px;
+                border-radius: 100px;
+                margin-top: 10px;
+                box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            }
+        }
+
+        > div:last-of-type {
+            padding-top: 50px;
+            padding-bottom: 10px;
+
+            h4 {
+                font-weight: 400;
+                font-size: 24px;
+                margin-bottom: 0;
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            p {
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #888;
+            }
+        }
+    }
+
+    .home-char2 {
+        display: flex;
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 2px;
+        padding: 10px;
+
+        > div:first-of-type {
+            flex: 0 1 42px;
+
+            img {
+                height: 42px;
+                box-shadow: 0 1px 3px #000;
+                border-radius: 10px;
+            }
+        }
+
+        > div:last-of-type {
+            flex: 0 1 calc(100% - 42px);
+            padding-left: 15px;
+            padding-top: 3px;
+
+            h5 {
+                font-weight: 400;
+                font-size: 16px;
+                margin-bottom: 0;
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            p {
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #888;
+            }
+        }
+    }
+
+    .home-friend {
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+
+        > div {
+            display: flex;
+            padding: 10px;
+
+            &:not(.home-fr-1) {
+                border-top: solid 2px #000;
+            }
+
+            > div:first-of-type {
+                flex: 0 1 42px;
+
+                img {
+                    height: 42px;
+                    box-shadow: 0 1px 3px #000;
+                    border-radius: 10px;
+                }
+            }
+
+            > div:last-of-type {
+                flex: 0 1 calc(100% - 42px);
+                padding-left: 15px;
+                padding-top: 3px;
+
+                h5 {
+                    font-weight: 400;
+                    font-size: 16px;
+                    margin-bottom: 0;
+
+                    a {
+                        color: #fff;
+                    }
+                }
+
+                p {
+                    margin: 0;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    color: #888;
+                }
+            }
+        }
+    }
+
+    .home-fc {
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        text-align: center;
+
+        > div:first-of-type {
+            position: relative;
+            background-color: var(--green);
+            box-shadow: 0 1px 5px #000;
+            height: 62px;
+
+            img {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+
+                height: 92px;
+                border-radius: 100px;
+                margin-top: 10px;
+                box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            }
+        }
+
+        > div:last-of-type {
+            padding-top: 50px;
+            padding-bottom: 15px;
+
+            h4 {
+                font-weight: 400;
+                font-size: 24px;
+                margin-bottom: 0;
+
+                a {
+                    color: #fff;
+                }
+            }
+
+            p {
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #888;
+            }
+        }
+    }
+
+    .home-box {
+        margin-bottom: 10px;
+    }
+
+    .home-patreon {
+        overflow: hidden;
+        display: flex;
+
+        border-radius: 5px;
+        background-color: #F96854;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        img {
+            flex: 0 1 50px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            background-color: #fff;
+        }
+
+        div {
+            flex: 0 1 calc(100% - 50px);
+            font-size: 20px;
+            padding: 9px 0 0 15px;
+        }
+    }
+
+    .home-discord {
+        overflow: hidden;
+        display: flex;
+
+        border-radius: 5px;
+        background-color: #7289DA;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        img {
+            flex: 0 1 50px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+            background-color: #fff;
+        }
+
+        div {
+            flex: 0 1 calc(100% - 50px);
+            font-size: 20px;
+            padding: 9px 0 0 15px;
+        }
+    }
+
+    .home-rank {
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .home-sync {
+        background-color: var(--darkText);
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 10px;
+    }
+}

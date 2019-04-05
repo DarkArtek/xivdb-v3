@@ -1,0 +1,25 @@
+.GameWindow {
+    border: solid 1px #000;
+    width: 1197px; height: 680px;
+    background-image: url(/img/tex_bg_2.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 1198px 680px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 1px 15px #000;
+}
+
+.StartWindow {
+    width: 491px; height: 300px;
+    position: absolute;
+    left: 50%; bottom: 160px;
+    transform: translateX(-50%);
+    text-align: center;
+}
+.StartButton {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}

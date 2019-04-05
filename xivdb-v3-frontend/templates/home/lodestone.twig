@@ -1,0 +1,79 @@
+{% for lc in LodestoneContent %}
+    {% set post = lc.data %}
+
+    <div class="home-{{ lc.type }} home-{{ loop.index }}">
+        {% if lc.type == 'DevBlogs' %}
+            <div>
+                <div>
+                    <img src="/img/ui/lodestone/blog_avatar.jpg" height="64">
+                </div>
+                <div>
+                    <div>
+                        <span>{{ post.author }}</span>
+                        <span>
+                            <a href="{{ post.url }}" target="_blank">View Blog Post</a>
+                        </span>
+                        <small>{{ post.time|dateRelative }}</small>
+                    </div>
+
+                    <h2>{{ post.title }}</h2>
+                </div>
+            </div>
+            <div>
+                {{ post.content|raw }}
+            </div>
+        {% elseif lc.type == 'DevPosts' %}
+            <div>
+                <div>
+                    <img src="{{ post.user_avatar }}" height="64">
+                </div>
+                <div>
+                    <div>
+                        <span>{{ post.user_name }} - {{ post.user_title}}</span>
+                        <span>
+                            <a href="{{ post.url }}" target="_blank">View Forum Post</a>
+                        </span>
+                        <small>{{ post.time|dateRelative }}</small>
+                    </div>
+
+                    <h2>{{ post.title }}</h2>
+                </div>
+            </div>
+            <div>
+                {{ post.content|raw }}
+            </div>
+        {% elseif lc.type in ['Notices', 'Maintenance', 'Updates', 'Status'] %}
+            {% set display = {
+                'Notices': ['Notice', 'notice.png'],
+                'Status': ['Status', 'status.png'],
+                'Maintenance': ['Maintenance', 'maintenance.png'],
+                'Updates': ['Updates', 'updates.png'],
+            } %}
+            {% set postdisplay = display[lc.type] %}
+            <div>
+                <img src="/img/ui/lodestone/{{ postdisplay[1] }}" height="32">
+            </div>
+            <div>
+                <a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+                <strong>{{ postdisplay[0]|upper }}</strong>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <small>Posted: {{ post.time|dateRelative }}</small>
+            </div>
+        {% elseif lc.type == 'Banners' %}
+            <a href="{{ post.url }}" target="_blank">
+                <img src="{{ post.banner }}">
+            </a>
+        {% elseif lc.type == 'Topics' %}
+            <div>
+                <a href="{{ post.url }}" target="_blank">
+                    <img src="{{ post.banner }}">
+                </a>
+            </div>
+            <h2>{{ post.title }}</h2>
+            <small>{{ post.time|dateRelative }}</small>
+            <div>
+                {{ post.html|raw }}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}

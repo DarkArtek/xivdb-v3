@@ -1,0 +1,87 @@
+{% extends "account/index.twig"  %}
+
+{% set page = 'account_characters' %}
+
+{% block subbody %}
+
+    <table class="table table-bordered table-dark acc-char-list">
+        <tbody>
+        {% for character in auth.user.characters %}
+        <tr>
+            <td width="1%" align="center">
+                <img src="{{ character.avatar }}" height="80">
+            </td>
+            <td width="50%">
+                <h4>
+                    <strong>{{ character.name }}</strong>
+                    &nbsp;&nbsp;
+                    <small>
+                        {{ character.server|upper }}
+                        &nbsp;&nbsp;
+                        (ID: {{ character.id }})
+                        &nbsp;&nbsp;
+                        {{ character.main ? 'Main' : 'Sub' }}
+                    </small>
+
+                    {% if not character.main %}
+                        <a href="{{ character.url }}" class="btn btn-primary btn-sm fr">Set Main</a>
+                    {% endif %}
+                </h4>
+                <div>
+                    <a href="{{ character.url }}">View Profile</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ path('account_characters_settings', { character: character.id }) }}">Settings</a>
+                </div>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td>You do not currently have any characters linked to your account.</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Add a new character</h2>
+    <br>
+    <table class="table table-bordered table-dark">
+        <tr>
+            <td width="40%">Character Verification Code:</td>
+            <td>
+                <span class="text-highlight">{{ auth.user.characterHash }}</span>
+            </td>
+        </tr>
+    </table>
+
+    <div class="card">
+        <div class="card-body">
+            <form class="acc-add-char">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="name" placeholder="Name, ID or Lodestone URL" value="Premium Virtue">
+                        <small class="form-text text-muted">If your name is short, please enter your full Lodestone URL</small>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="server">
+                            {% for group, servers in api.getServerList(1) %}
+                            <optgroup label="Servers: {{ group }}">
+                                {% for server in servers %}
+                                <option value="{{ server }}" {{ server != 'Phoenix' ?: 'selected' }}>{{ server }}</option>
+                                {% endfor %}
+                            </optgroup>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+            <div class="acc-add-char-res">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

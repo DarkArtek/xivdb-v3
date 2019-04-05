@@ -1,0 +1,44 @@
+<div class="sup-pop">
+    <h3>Support &amp; Feedback</h3>
+
+    <p>Request for help with your account or any issues with the website.<br>
+        <small>Click anywhere outside this window to close it.</small></p>
+
+    {% if auth.user %}
+        <form class="SupportTicketForm">
+            <div class="form-group">
+                <label for="sType">Type of issue</label>
+                <select class="form-control" id="sType" name="sType">
+                    {% for type in constant('App\\Controller\\FeedbackController::TYPES') %}
+                    <option value="{{ type }}">{{ type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="sMessage">Details of the issue</label>
+                <textarea class="form-control" id="sMessage" name="sMessage" aria-describedby="sMessage"></textarea>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="sPrivate" name="sPrivate">
+                <label class="form-check-label" for="sPrivate">Should your issue be private?</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="sEmail" name="sEmail">
+                <label class="form-check-label" for="sEmail">Receive email updates on this issue?</label>
+            </div>
+
+            <div class="alert alert-info">
+                Please keep your feedback related to the site. Be constructive, any rude or offensive posts will be
+                ignored and deleted. I will attempt to response as quickly as possible!
+            </div>
+            <button type="button" class="btn btn-primary btn-createSupportTicket">Create Issue</button>
+        </form>
+        <div class="SupportTicketResponse"></div>
+    {% else %}
+        <div class="alert alert-danger">
+            We're really sorry, but you must be logged in to submit Feedback or request Support. If you cannot
+            log-in using one of the social options and need to report something, please send an email to: <strong>kupo@xivdb.com</strong>.
+        </div>
+    {% endif %}
+
+</div>

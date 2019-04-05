@@ -1,0 +1,168 @@
+.copyright {
+    position: absolute;
+    transition: .4s;
+    z-index: 10;
+    bottom: 5px;
+    left: 5px;
+    font-weight: 600;
+    font-size: 10px;
+    color: #fff;
+    opacity: 0.3;
+}
+
+.copyright:hover {
+    opacity: 0.6;
+}
+
+.logo {
+    animation: logoAnimation 3s infinite;
+}
+
+@-webkit-keyframes logoAnimation {
+    0%    { transform: translateY(0px); }
+    50%   { transform: translateY(-8px); }
+    100%  { transform: translateY(0px); }
+}
+
+.party-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 500px;
+    height: 400px;
+}
+.party-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+}
+
+.player {
+    position: absolute;
+    width: 180px; height: 100px;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: yellow;
+    text-shadow: 0 1px 3px #000;
+}
+.player.isDead {
+    opacity: 0.4;
+    cursor: pointer;
+}
+.player.isDead .sprite img {
+    filter: grayscale(100%);
+}
+.player:hover:not(.isDead) {
+    transform: scale(1.2);
+}
+.player .name img {
+    vertical-align: top;
+    margin-right: 3px;
+}
+.player .health {
+    display: block;
+    width: 100px;
+    margin-top: 5px;
+    margin-left: 40px;
+    background-color: #420200;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 3px #000;
+    text-align: left;
+}
+.player .health span {
+    display: inline-block;
+    background-color: #59df90;
+    height: 8px;
+    transition: 1s;
+}
+.player .sprite {
+    width: 74px;
+    height: 88px;
+    position: relative;
+    left: 50px;
+    background-position: center center;
+}
+.player.player1 {
+    bottom: 230px;
+    right: -250px;
+}
+.player.player2 {
+    bottom: 70px;
+    right: -250px;
+}
+.player.player3 {
+    bottom: 200px;
+    right: -250px;
+}
+.player.player4 {
+    bottom: 50px;
+    right: -250px;
+}
+.enemy {
+    position: absolute;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 200px;
+}
+
+.enemy.isDead {
+    opacity: 0.8;
+}
+.enemy.isDead img {
+    filter: grayscale(100%);
+}
+
+.enemy:hover:not(.isDead) {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.enemy1 {
+    top: 50px;
+    left: -200px;
+}
+
+.enemy2 {
+    top: 100px;
+    left: -200px;
+}
+
+.enemy3 {
+    top: 210px;
+    left: -200px;
+}
+
+.enemy .health {
+    display: block;
+    width: 100px;
+    margin-top: 5px;
+    margin-left: 50px;
+    background-color: #222;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 3px #000;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.enemy .health span {
+    display: inline-block;
+    background-color: #ff7069;
+    height: 8px;
+    transition: 1s;
+}
+.GameOver {
+    position: absolute;
+    z-index: 99;
+    top: 25px; left: 25px; right: 25px; bottom: 25px;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 1px 50px 10px #000;
+    text-align: center;
+    padding: 100px 0 0 0;
+    display: none;
+}

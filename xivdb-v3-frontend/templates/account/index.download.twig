@@ -1,0 +1,21 @@
+{% extends "account/index.twig"  %}
+
+{% set page = 'account_download' %}
+
+{% block subbody %}
+
+    <h1>Download Information</h1>
+
+    <p>
+        You have a right to download all the information XIVDB stores on you, use the button
+        below to receive a text file containing account data, comments, screenshots,
+        characters and anything else related to your account.
+    </p>
+
+    <p>
+        <strong>XIVDB Does not store any passwords.</strong>
+    </p>
+
+    <a href="{{ path('account_download', { request: 1 }) }}" class="btn btn-primary" target="_blank">Download My Account Information</a>
+
+{% endblock %}

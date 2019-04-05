@@ -1,0 +1,42 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <div align="center">
+        <img src="{{ data.Avatar }}" height="120" style="border-radius: 10px;">
+    </div>
+
+    <p style="font-size: 20px;">Welcome {{ data.Username|title }}!</p>
+
+    <p>It is great to see you join the XIVDB Community, with an account you can post comments, upload screenshots
+    and track your in-game character!</p>
+
+    <p>Your account has been created via: {{ data.SSO|title }}.</p>
+
+    <br>
+
+    <h3>Character Tracking</h3>
+
+    <p>To get started, go to <a href="https://xivdb.com/account">My Account</a> and then
+        <a href="https://xivdb.com/account/characters">Characters</a> and here you can
+        link your character to your account, this will allow you to follow your
+        progress as well as your friends!</p>
+
+    <p>Free companies will be automatically added to the site, you can also add your
+        linkshells from the "My Account" area.</p>
+
+    <br>
+
+    <h3>Privacy</h3>
+
+    <p>Your privacy matters, at any point you want to see what XIVDB holds about you, go to
+        <a href="https://xivdb.com/account">My Account</a> and click on "Download Information". If
+        you do not like what you see, you have the right to delete your account fully from the
+        "My Account" area.</p>
+
+    <br><hr><br>
+
+    <p>Keep on adventuring kupo!</p>
+    <p><small>- Premium Virtue (Phoenix)</small></p>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            html, body {
+                background-color: #eee;
+            }
+            main {
+                margin: 0 50px;
+            }
+            .jumbotron {
+                color: #fff;
+                background-color: #8619dc;
+                text-shadow: 0 1px 3px #000;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div><img src="/xivsync.png" height="64"></div>
+                <br>
+                <p class="lead">
+                    XIVDB Lodestone tracking service based in Japan<br>
+                </p>
+            </div>
+        </div>
+
+        <main>
+            <div class="container-fluid">
+                {% block body %}{% endblock %}
+            </div>
+        </main>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+    </body>
+</html>

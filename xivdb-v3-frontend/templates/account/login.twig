@@ -1,0 +1,74 @@
+{% extends "base/frontend.twig"  %}
+
+{% block title %}SIGN-IN{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="login-title">
+            <h1>SIGN-IN</h1>
+            <p>
+                To login to XIVDB choose one of the Social Sign-In services below.
+            </p>
+        </div>
+
+        <div class="login-form">
+            <div>
+                <div class="login-box" align="center">
+
+                    <a href="{{ path('account_login_discord') }}" class="btn-login-discord">
+                        <img src="/img/ux/logo_discord.png"> Login with <strong>Discord</strong>
+                    </a>
+
+                    {#
+                    <hr>
+
+                    <a href="{{ path('account_login_discord') }}" class="btn-login-twitter">
+                        <img src="/img/ux/logo_twitter.png"> Login with <strong>Twitter</strong>
+                    </a>
+
+                    <hr>
+
+                    <a href="{{ path('account_login_discord') }}" class="btn-login-google">
+                        <img src="/img/ux/logo_google.jpg"> Login with <strong>Google</strong>
+                    </a>
+
+                    <hr>
+
+                    <a href="{{ path('account_login_discord') }}" class="btn-login-steam">
+                        <img src="/img/ux/logo_steam.png"> Login with <strong>Steam</strong>
+                    </a>
+                    #}
+
+                </div>
+            </div>
+            <div>
+                <div class="login-box login-box-text">
+                    <h2>Welcome!</h2>
+
+                    <p>When signing up to XIVDB you are agreeing to the
+                        <a href="https://www.zam.com/terms.html" target="_blank">Terms of Use</a>
+                        and <a href="https://www.zam.com/privacy.html" target="_blank">Privacy Policy</a>
+                        once you click the "Register" button.</p>
+
+                    <ul>
+                        <li>
+                            Character information IS NOT personal information. You can hide your character and its information at anytime.
+                        </li>
+                        <li>
+                            You have the right to request all personal information about you be removed from the site. This includes:
+                            Your email, your username and any linked social connections.
+                        </li>
+                        <li>
+                            You have a right to request all information recorded about you in an easy to read format.
+                            XIVDB does not mine or collect external personal information about you.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

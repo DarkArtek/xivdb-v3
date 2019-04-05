@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#
+# API
+#
+
+if whiptail --yesno "Deploy API?" 10 30 ;then
+    cd ~/xivdb-v3-api/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi

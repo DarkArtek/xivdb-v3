@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#
+# Sync
+#
+
+if whiptail --yesno "Deploy Sync?" 10 30 ;then
+    cd ~/xivdb-v3-sync/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi

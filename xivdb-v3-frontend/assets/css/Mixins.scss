@@ -1,0 +1,115 @@
+// clear fix
+@mixin cf() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+}
+
+// horizontal gradientz
+@mixin horizontal-gradient($color1, $location1, $color2, $location2) {
+    background-image: -moz-linear-gradient(left,  $color1 $location1, $color2 $location2); /* FF3.6+ */
+    background-image: -webkit-gradient(linear, left top, right top, color-stop($location1,$color1), color-stop($location2,$color2)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(left,  $color1 $location1, $color2 $location2); /* Chrome10+,Safari5.1+ */
+    background-image: -o-linear-gradient(left,  $color1 $location1, $color2 $location2); /* Opera 11.10+ */
+    background-image: -ms-linear-gradient(left,  $color1 $location1, $color2 $location2); /* IE10+ */
+    background-image: linear-gradient(to right,  $color1 $location1, $color2 $location2); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color1}', endColorstr='#{$color2}',GradientType=1 ); /* IE6-9 */
+    background-size: 100% 100%;
+}
+
+// vertical gradientz
+@mixin vertical-gradient($color1, $location1, $color2, $location2) {
+    background-image: -moz-linear-gradient(top,  $color1 $location1, $color2 $location2); /* FF3.6+ */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop($location1,$color1), color-stop($location2,$color2)); /* Chrome,Safari4+ */
+    background-image: -webkit-linear-gradient(top,  $color1 $location1, $color2 $location2); /* Chrome10+,Safari5.1+ */
+    background-image: -o-linear-gradient(top,  $color1 $location1, $color2 $location2); /* Opera 11.10+ */
+    background-image: -ms-linear-gradient(top,  $color1 $location1, $color2 $location2); /* IE10+ */
+    background-image: linear-gradient(to bottom,  $color1 $location1, $color2 $location2); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color1}', endColorstr='#{$color2}',GradientType=0 ); /* IE6-9 */
+    background-size: 100% 100%;
+}
+
+// valign
+@mixin valign {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+// halign
+@mixin halign {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+// center
+@mixin center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@mixin centerScale($ratio: 1.5) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale($ratio);
+    -ms-transform: translate(-50%, -50%) scale($ratio);
+    transform: translate(-50%, -50%) scale($ratio);
+}
+
+// blur and gray scale
+@mixin blurgrayscale($blur, $grayscale) {
+    -webkit-filter: blur($blur) grayscale($grayscale);
+       -moz-filter: blur($blur) grayscale($grayscale);
+        -ms-filter: blur($blur) grayscale($grayscale);
+         -o-filter: blur($blur) grayscale($grayscale);
+            filter: blur($blur) grayscale($grayscale);
+}
+
+// grayscale
+@mixin grayscale($grayscale) {
+    -webkit-filter: grayscale($grayscale);
+       -moz-filter: grayscale($grayscale);
+        -ms-filter: grayscale($grayscale);
+         -o-filter: grayscale($grayscale);
+            filter: grayscale($grayscale);
+}
+
+// blur
+@mixin blur($blur) {
+    -webkit-filter: blur($blur);
+       -moz-filter: blur($blur);
+        -ms-filter: blur($blur);
+         -o-filter: blur($blur);
+            filter: blur($blur);
+}
+
+// scale
+@mixin scale($ratio: 1.5){
+    -webkit-transform: scale($ratio);
+       -moz-transform: scale($ratio);
+        -ms-transform: scale($ratio);
+         -o-transform: scale($ratio);
+            transform: scale($ratio);
+}
+
+// rotate
+@mixin rotate($degrees) {
+    -webkit-transform: rotate($degrees);
+       -moz-transform: rotate($degrees);
+        -ms-transform: rotate($degrees);
+         -o-transform: rotate($degrees);
+            transform: rotate($degrees);
+}

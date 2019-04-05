@@ -1,0 +1,31 @@
+{% extends "base/frontend.twig"  %}
+
+{% block title %}{{ filename }} - XIVDB API{% endblock %}
+
+{% block body %}
+<div class="container container-page">
+
+    <div class="box box-flex api-docs">
+        <aside>
+            <h3>DOCS</h3>
+            {% set docs = [
+                'Welcome',
+                'Search',
+                'Content',
+                'Character',
+                'FreeCompany',
+                'Linkshell',
+                'PatchList',
+                'XIVSYNC'
+            ] %}
+            {% for file in docs %}
+                <a href="{{ path('api_file', { file: file }) }}" class="{{ filename != file ?: 'active' }}">{{ file }}</a>
+            {% endfor %}
+        </aside>
+        <div class="box-page">
+            {{ markdown|raw }}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

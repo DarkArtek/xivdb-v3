@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+#
+# Common script for nstalling mariadb
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: MariaDB"
+echo ""
+
+# MariaDB
+echo "mysql-server mysql-server/root_password password xxxxx" | debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password xxxxx" | debconf-set-selections
+
+sudo apt-get install software-properties-common
+sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+sudo add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://mirrors.coreix.net/mariadb/repo/10.2/ubuntu xenial main'
+sudo apt-get update -y
+sudo apt-get install mariadb-server -y 
+
+# MariaDB Configuration
+sudo sed -i 's|max_connections         = 100|max_connections         = 300|g' /etc/mysql/my.cnf
+sudo sed -i 's|slow_query_log_file     =|#slow_query_log_file     =|g' /etc/mysql/my.cnf
+sudo sed -i 's|long_query_time =|#long_query_time =|g' /etc/mysql/my.cnf
+sudo sed -i 's|log_bin                 =|#log_bin                 =|g' /etc/mysql/my.cnf
+sudo sed -i 's|log_bin_index           =|#log_bin_index           =|g' /etc/mysql/my.cnf
+sudo sed -i 's|expire_logs_days        =|#expire_logs_days        =|g' /etc/mysql/my.cnf
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"

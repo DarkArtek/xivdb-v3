@@ -1,0 +1,36 @@
+{% extends "base/frontend.twig"  %}
+
+{% block title %}My Account{% endblock %}
+
+{% block body %}
+
+    <div class="container container-page">
+
+        <div class="box box-flex">
+
+            <aside>
+
+                <h3>ACCOUNT</h3>
+                <a href="{{ path('account_index') }}" class="{{ page != 'account_index' ?: 'active' }}">Sign-In Account</a>
+                <a href="{{ path('account_star') }}" class="{{ page != 'account_star' ?: 'active' }}">Star Status</a>
+                <a href="{{ path('account_delete') }}" class="{{ page != 'account_delete' ?: 'active' }}">Delete Account</a>
+                <a href="{{ path('account_download') }}" class="{{ page != 'account_download' ?: 'active' }}">Download Information</a>
+
+                <h3>LODESTONE</h3>
+                <a href="{{ path('account_characters') }}" class="{{ page != 'account_characters' ?: 'active' }}">Characters</a>
+                <a href="#" class="{{ page != 'account_free_company' ?: 'active' }}">Free Company</a>
+                <a href="#" class="{{ page != 'account_linkshells' ?: 'active' }}">Linkshells</a>
+                <a href="{{ path('account_comments') }}" class="{{ page != 'account_comments' ?: 'active' }}">Comments</a>
+                <a href="{{ path('account_screenshots') }}" class="{{ page != 'account_screenshots' ?: 'active' }}">Screenshots</a>
+
+            </aside>
+
+            <div class="box-page">
+                {% block subbody %}{% endblock %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

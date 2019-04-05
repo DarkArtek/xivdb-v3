@@ -1,0 +1,15 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <p><strong>FEEDBACK</strong></p>
+
+    <h1>(Ref: {{ data.feedback.ref }}) {{ data.feedback.title }}</h1>
+
+    <p>{{ data.feedback.message }}</p>
+
+    <p>
+        <strong>URL:</strong> <a href="https://xivdb.com/issues/{{ data.feedback.id }}" target="_blank">View this feedback on XIVDB.</a>
+    </p>
+
+{% endblock %}

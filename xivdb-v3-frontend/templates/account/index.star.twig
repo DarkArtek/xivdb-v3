@@ -1,0 +1,130 @@
+{% extends "account/index.twig"  %}
+
+{% set page = 'account_star' %}
+
+{% block stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Titan+One" rel="stylesheet">
+{% endblock %}
+
+{% block subbody %}
+
+    <div class="acc-star">
+
+        <h1>
+            <img src="/img/ux/logo_light.svg" height="50">
+            <div>
+                STAR STATUS
+            </div>
+        </h1>
+
+        <div class="acc-status">
+            {% if auth.user.star %}
+                <div>
+                    <img src="/img/ui/misc/star.png" height="42">
+                </div>
+                <h4>You are a star member!</h4>
+            {% else %}
+                <h4>Not-Active</h4>
+            {% endif %}
+        </div>
+
+        <hr>
+
+        <div class="acc-howto">
+            <div>
+                <h5>Join via PATREON</h5>
+                [logo link]
+            </div>
+            <div>
+                <h5>Make a small Donation</h5>
+                [logo link]
+            </div>
+            <div>
+                <h5>Activity &amp; Contribution</h5>
+                <p><strong class="text-highlight">120</strong> Days Remaining</p>
+            </div>
+        </div>
+
+        <div class="acc-about">
+            <h4>What is STAR STATUS?</h4>
+            This is XIVDB premium service for players who
+            are star members of the site. They have obtained this badge
+            via supporting the site either through Patreon, Donations
+            or by being awesome everyday.
+        </div>
+
+        <div class="acc-about">
+            <h4>What perks do I get?</h4>
+            <br>
+            <table class="table table-bordered table-dark">
+                <tr>
+                    <td width="35%"><strong>The Star Badge!</strong></td>
+                    <td>Throughout the site, a star will appear next to your name</td>
+                </tr>
+                <tr>
+                    <td><strong>Discord Rank!</strong></td>
+                    <td>In the XIVDB Discord you will be known as a Star Member!</td>
+                </tr>
+                <tr>
+                    <td><strong>Priority Updating</strong></td>
+                    <td>No longer will your character take days to update, all your characters
+                        will be moved to priority update queue where only you and other
+                        star members live. This will improve your update time
+                        to less than 1 hour.</td>
+                </tr>
+                <tr>
+                    <td><strong>Friend Priority Updating</strong></td>
+                    <td>Have friends you would like to prioritise? A small static group?
+                    You can choose which friends you would like to have priority updating!</td>
+                </tr>
+                <tr>
+                    <td><strong>FC Priority Updating</strong></td>
+                    <td>The FC you are currently in (even if you change FC) will update
+                    more often, keeping that data up to date!</td>
+                </tr>
+                <tr>
+                    <td><strong>Email + Discord notifications</strong></td>
+                    <td>
+                        You can create custom notifications to be sent to you via email, these
+                        could be when a friend reaches a specific level, completes an achievement. These
+                        can be set as daily or weekly reports and sent to you via Email or via Discord DM.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="acc-about">
+            <h4>How do I become a Star Member?</h4>
+            There are 3 ways to become a star member, 2 of them involve
+            throwing some Gil at the site as an appreciation and you will
+            immediately receive Star Membership. If your retainer just
+            isn't making enough you can choose to be active on the site,
+            contribute daily, use it's features and you shall be rewarded.
+            <br>
+
+            <table class="table table-bordered table-dark">
+                <tr>
+                    <td width="35%"><strong>Patreon</strong></td>
+                    <td>Sponsor the site via Patreon every month to become
+                    a star member. You only have to contribute at least
+                    1 month to become a star member forever :)</td>
+                </tr>
+                <tr>
+                    <td><strong>One-time Donation</strong></td>
+                    <td>If you prefer the more direct approach, you can
+                    donate via PayPal and receive your Star Status immediately</td>
+                </tr>
+                <tr>
+                    <td><strong>Activity &amp; Contribution</strong></td>
+                    <td>Being active on the site will allow you to work
+                    towards becoming a Star member. This involves contributing
+                    to comments, uploading screenshots and checking in on your
+                    characters and friends. Each day will get you closer and closer!</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+{% endblock %}

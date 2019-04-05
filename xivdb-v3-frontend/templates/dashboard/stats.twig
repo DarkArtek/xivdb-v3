@@ -1,0 +1,156 @@
+{% extends 'dashboard/index.twig' %}
+
+{% block body %}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        .js-plotly-plot {
+            margin-bottom: 30px;
+            box-shadow: 0 1px 10px 1px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .js-plotly-plot .zerolinelayer path {
+            stroke: rgb(220, 220, 220) !important;
+            stroke-opacity: 0.3 !important;
+        }
+        .js-plotly-plot .yaxislayer-above,
+        .js-plotly-plot .xaxislayer-above {
+            font-weight: 600;
+        }
+    </style>
+
+    <div class="box">
+        <h1>Unique</h1>
+        <div id="unique"></div>
+        <script>
+            Plotly.newPlot('unique', [{
+                x: [{{ Stats.day|keys|join(',') }}],
+                y: [{{ Stats.day|join(',') }}],
+                type: 'scatter',
+                name: 'All',
+            }, {
+                x: [{{ Stats.lang.en|keys|join(',') }}],
+                y: [{{ Stats.lang.en|join(',') }}],
+                type: 'scatter',
+                name: 'English',
+            }, {
+                x: [{{ Stats.lang.de|keys|join(',') }}],
+                y: [{{ Stats.lang.de|join(',') }}],
+                type: 'scatter',
+                name: 'German',
+            }, {
+                x: [{{ Stats.lang.fr|keys|join(',') }}],
+                y: [{{ Stats.lang.fr|join(',') }}],
+                type: 'scatter',
+                name: 'French',
+            }, {
+                x: [{{ Stats.lang.ja|keys|join(',') }}],
+                y: [{{ Stats.lang.ja|join(',') }}],
+                type: 'scatter',
+                name: 'Japanese',
+            }, {
+                x: [{{ Stats.lang.kr|keys|join(',') }}],
+                y: [{{ Stats.lang.kr|join(',') }}],
+                type: 'scatter',
+                name: 'Korean',
+            }, {
+                x: [{{ Stats.lang.cn|keys|join(',') }}],
+                y: [{{ Stats.lang.cn|join(',') }}],
+                type: 'scatter',
+                name: 'Chinese',
+            }], {}, {
+                displayModeBar: false
+            });
+        </script>
+        <table class="table table-bordered table-dark">
+            <thead>
+            <th>Day</th>
+            <th>All Languages</th>
+            <th>English</th>
+            <th>German</th>
+            <th>French</th>
+            <th>Japanese</th>
+            <th>Korean</th>
+            <th>Chinese</th>
+            </thead>
+            <tbody>
+            {% for i, value in Stats.day if value > 0 %}
+                <tr>
+                    <td><span class="text-warning">{{ i }}</span> </td>
+                    <td><strong>{{ value|number_format }}</strong></td>
+                    <td>{{ Stats.lang.en[i]|number_format }}</td>
+                    <td>{{ Stats.lang.de[i]|number_format }}</td>
+                    <td>{{ Stats.lang.fr[i]|number_format }}</td>
+                    <td>{{ Stats.lang.ja[i]|number_format }}</td>
+                    <td>{{ Stats.lang.kr[i]|number_format }}</td>
+                    <td>{{ Stats.lang.cn[i]|number_format }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br><br>
+
+    <h2>Users Per Day</h2>
+    <div id="days"></div>
+    <script>
+        Plotly.newPlot('days', [{
+            x: [{{ Stats.day|keys|join(',') }}],
+            y: [{{ Stats.day|join(',') }}],
+            type: 'scatter',
+            name: 'Days',
+        }], {}, {
+            displayModeBar: false
+        });
+    </script>
+
+    <br><br><br><br>
+
+    <h2>Users Per Second</h2>
+    <div id="seconds"></div>
+    <script>
+        Plotly.newPlot('seconds', [{
+            x: [{{ Stats.sec|keys|join(',') }}],
+            y: [{{ Stats.sec|join(',') }}],
+            type: 'scatter',
+            name: 'Second',
+        }], {}, {
+            displayModeBar: false
+        });
+    </script>
+
+    <br><br><br><br>
+
+    <h2>Users Per Minute</h2>
+    <div id="minute"></div>
+    <script>
+        Plotly.newPlot('minute', [{
+            x: [{{ Stats.min|keys|join(',') }}],
+            y: [{{ Stats.min|join(',') }}],
+            type: 'scatter',
+            name: 'Minute',
+        }], {}, {
+            displayModeBar: false
+        });
+    </script>
+
+    <br><br><br><br>
+
+    <h2>Users Per Hour</h2>
+    <div id="hour"></div>
+    <script>
+        Plotly.newPlot('hour', [{
+            x: [{{ Stats.hrs|keys|join(',') }}],
+            y: [{{ Stats.hrs|join(',') }}],
+            type: 'scatter',
+            name: 'Hour',
+        }], {}, {
+            displayModeBar: false
+        });
+    </script>
+
+{% endblock %}

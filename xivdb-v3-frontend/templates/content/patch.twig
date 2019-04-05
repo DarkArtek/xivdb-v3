@@ -1,0 +1,27 @@
+{% extends 'base/frontend.twig'  %}
+
+{% block title %}Patch List{% endblock %}
+
+{% block body %}
+<div class="container container-page">
+    {% for ExVersion in PatchList.ExVersions  %}
+        {% set Patches = PatchList.List[ExVersion.ID] %}
+        <div class="alert alert-secondary" align="center">
+            <h1>{{ ExVersion.Name }}</h1>
+            {% for Patch in Patches %}
+            <div>
+                {% if Patch.Banner %}
+                <div>
+                    <img src="{{ Patch.Banner }}" height="200">
+                </div>
+                {% endif %}
+                <a style="font-size: 18px;" href="{{ path('content_game_patch_view', { version: Patch.Version }) }}">{{ Patch.Name }}</a>
+                {% if Patch.Banner %}
+                <hr>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

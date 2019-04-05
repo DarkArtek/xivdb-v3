@@ -1,0 +1,32 @@
+#
+# Sync on DB Side: DigitalOcean xivdb-atla : 206.189.72.142
+#
+
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_add
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_update_1
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_update_2
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_update_3
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_update_4
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_update_5
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_achievements_1
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_achievements_2
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_achievements_3
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_achievements_4
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_achievements_5
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_friends_1
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_friends_2
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_friends_3
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_friends_4
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto characters_friends_5
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_add
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_update_1
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_update_2
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_update_3
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_update_4
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto linkshells_update_5
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_add
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_update_1
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_update_2
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_update_3
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_update_4
+* * * * * /usr/bin/php /home/xivdb/xivdb-v3-sync/bin/console bin/console app:auto freecompany_update_5

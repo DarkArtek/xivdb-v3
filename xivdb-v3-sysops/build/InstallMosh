@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+#
+# Install script for Mosh server
+#
+
+#
+# DO NOT RUN AS ROOT!!!!!!
+#
+
+echo ""
+echo "SETTING UP MOSH"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# Create folders
+source ./build/common/folders
+
+# NGINX
+source ./build/common/install_nginx
+
+# PHP
+source ./build/common/install_php
+
+# Redis
+source ./build/common/install_redis
+
+# Composer
+source ./build/common/install_composer
+
+# DigitalOcean Server Monitoring
+source ./build/common/install_do_monitoring
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+# Copy nginx profiles
+echo ""
+echo "Copy NGINX configuration"
+echo ""
+
+# Remove defaults
+sudo rm /etc/nginx/sites-available/default
+sudo rm /etc/nginx/sites-enabled/default
+
+# add nginx configs
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonMicroSiteConfig /etc/nginx/sites-available/CommonMicroSiteConfig
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/NginxMosh /etc/nginx/sites-available/NginxMosh
+sudo ln -s /etc/nginx/sites-available/NginxMosh /etc/nginx/sites-enabled/NginxMosh
+
+# add base nginx config
+sudo cp /home/xivdb/xivdb-v3-sysops/nginx/CommonNginx /etc/nginx/nginx.conf
+
+#
+# Clone repos
+#
+echo ""
+echo "Pull code from GIT"
+echo ""
+
+cd ~/
+git clone https://viion@bitbucket.org/ffxiv/xivdb-v3-api.git
+
+
+#
+# Setup
+#
+
+cd ~/xivdb-v3-api && composer install && cp ~/xivdb-v3-api/.env.dist ~/xivdb-v3-api/.env
+
+
+# ---------------------------------------
+
+# Finish
+cd ~/xivdb-v3-sysops
+source ./build/common/finish

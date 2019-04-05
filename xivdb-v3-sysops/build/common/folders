@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Create and set permissions for all folders,
+# this is done here as a common as it does
+# not matter if all services create hte same
+# folders, simplier to manage
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Creating log, cache and session folders ..."
+echo ""
+
+sudo mkdir -p /xivdb/log /xivdb/cache /xivdb/session
+sudo chown xivdb:xivdb /xivdb/log /xivdb/cache /xivdb/session
+sudo chmod -R 0777 /xivdb/log /xivdb/cache /xivdb/session
+sudo chmod -R g+w /xivdb/log /xivdb/cache /xivdb/session
+echo "------------------------------------------------------------------------------------"

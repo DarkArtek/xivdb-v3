@@ -1,0 +1,62 @@
+#
+# Microsites: Frontend
+#
+
+server
+{
+    listen 80;
+    listen 443 ssl;
+    server_name www.xivdb.com;
+    return 301 https://xivdb.com;
+}
+
+server
+{
+    listen 80;
+    server_name xivdb.com jp.xivdb.com ja.xivdb.com fr.xivdb.com de.xivdb.com cn.xivdb.com kr.xivdb.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server
+{
+    server_name
+        xivdb-staging.com
+        fr.xivdb-staging.com
+        de.xivdb-staging.com
+        ja.xivdb-staging.com
+        ru.xivdb-staging.com
+        cn.xivdb-staging.com
+        kr.xivdb-staging.com;
+
+    root /home/xivdb/xivdb-v3-frontend/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+#
+# Adminer Viewer
+# - swoyquqhogcjuhllaxnd.xivdb-staging.com
+#
+server
+{
+    listen 80;
+    server_name swoyquqhogcjuhllaxnd.xivdb-staging.com;
+    root /home/xivdb/adminer;
+    index index.php;
+    sendfile off;
+    client_max_body_size 500m;
+
+    # Normal directory
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    # PHP Specifics
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS off;
+        fastcgi_read_timeout 600;
+    }
+}

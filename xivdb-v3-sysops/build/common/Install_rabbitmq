@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+#
+# Install RabbitMQ
+#
+
+echo "------------------------------------------------------------------------------------"
+wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+sudo dpkg -i erlang-solutions_1.0_all.deb
+sudo apt-get update -y
+sudo apt-get install erlang erlang-nox -y
+
+echo 'deb http://www.rabbitmq.com/debian/ testing main' | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+wget -O- https://www.rabbitmq.com/rabbitmq-release-signing-key.asc | sudo apt-key add -
+
+sudo apt-get update -y
+sudo apt-get install rabbitmq-server -y
+sudo apt autoremove -y
+
+echo "Starting RabbitMq Server"
+sudo systemctl enable rabbitmq-server
+sudo systemctl start rabbitmq-server
+
+echo "Setting up admin password"
+sudo rabbitmqctl add_user xivdb_mq h7jFmw9GiAqc99eJNi5D6kc8EJ5lxD
+sudo rabbitmqctl set_user_tags xivdb_mq administrator
+sudo rabbitmqctl set_permissions -p / xivdb_mq ".*" ".*" ".*"
+
+echo "Setting up web portal (You must restart RabbitMQ after enabling the plugins)"
+echo "Note: This will not work at Joshs work..."
+sudo rabbitmq-plugins enable rabbitmq_management
+
+# sudo service rabbitmq-server enable
+# sudo service rabbitmq-server start
+# sudo service rabbitmq-server stop
+# sudo service rabbitmq-server status
+
+sudo service rabbitmq-server restart
+sudo service rabbitmq-server status
+
+echo "RabbitMQ is live and running"
+echo "------------------------------------------------------------------------------------"

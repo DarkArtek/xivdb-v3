@@ -1,0 +1,9 @@
+#
+# SyncHome
+#
+
+# Run Auto-Manager
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:manage > /home/xivdb/logs/auto_manager.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

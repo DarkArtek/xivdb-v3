@@ -1,0 +1,57 @@
+:root {
+    --highlight: #fff5ad;
+    --highlighter: #fffdd7;
+    --blue: #0096ff;
+    --blueDark: #015cd9;
+    --red: #ff5030;
+    --yellow: #fff936;
+    --dark: #0b0c0e;
+    --darkText: #212529;
+    --faint: #f4f4f4;
+    --code: #203e85;
+    --classjob: #c3b18d;
+    --gc1: #760d1e;
+    --gc2: #7f5404;
+    --gc3: #1c2021;
+
+    --danger: var(--red);
+}
+
+// breakpoints
+$breakpointMobile: 320px;
+$breakpointMobileMax: 600px;
+$breakpointTablet: 860px;
+$breakpointTabletMax: 1000px;
+$breakpointDesktop: 1150px;
+$breakpointDesktopMax: 1600px;
+$breakpointMaximum: 2000px;
+
+// breakpoints
+$mq-breakpoints: (
+    mobile: $breakpointMobile,
+    mobileMax: $breakpointMobileMax,
+    tablet: $breakpointTablet,
+    tabletMax: $breakpointTabletMax,
+    desktop: $breakpointDesktop,
+    desktopMax: $breakpointDesktopMax,
+    max: $breakpointMaximum,
+);
+
+@import "MQ";
+@import "Mixins";
+@import "Misc";
+
+// Layout
+@import "LayoutBody";
+@import "LayoutHeader";
+@import "LayoutFooter";
+@import "LayoutLogin";
+@import "LayoutPage";
+@import "LayoutHome";
+@import "LayoutSupport";
+@import "LayoutSearch";
+@import "Layout";
+
+// Profile
+@import "ProfileCharacter";
+@import "ProfileCommon";

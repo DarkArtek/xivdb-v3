@@ -1,0 +1,72 @@
+{% extends "account/index.twig"  %}
+
+{% set page = 'account_delete' %}
+
+{% block subbody %}
+
+    <h1>Delete Account</h1>
+
+    <p>You have the right to delete your account. All related information will be
+    removed and characters unlinked. If you wish to return to /the site you can login again
+    using an SSO provider and a new account will be created.</p>
+
+    <div class="alert alert-warning">
+        Please note: Deleting your account is irreversible by the site, you can create a new account at any
+        time by simply going to log-in and choosing your preferred Sign-In Service. You can then re-link
+        any characters, free companies or linkshells you had. Comments and screenshots cannot be
+        recovered after being deleted.
+    </div>
+
+    <h4>Please confirm to the following:</h4>
+
+    {% if app.session.flashbag.get('account_deletion_error') %}
+    <div class="alert alert-danger">
+        Please make sure to read and confirm each checkbox to delete your account.
+    </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete1" id="delete1">
+            <label class="form-check-label" for="delete1">
+                I confirm I would like to delete my XIVDB Account.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete2" id="delete2">
+            <label class="form-check-label" for="delete2">
+                I understand that deleted data cannot be recovered.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete3" id="delete3">
+            <label class="form-check-label" for="delete3">
+                I understand my comments will be removed from the site.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete4" id="delete4">
+            <label class="form-check-label" for="delete4">
+                I understand my screenshots will be removed from the sites.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete5" id="delete5">
+            <label class="form-check-label" for="delete5">
+                I understand that any linked character, free company or linkshell will
+                be removed from my account but will remain on the site.
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="delete6" id="delete6">
+            <label class="form-check-label" for="delete6">
+                I confirm I have read each statement above.
+            </label>
+        </div>
+        <br>
+        <div class="form-row">
+            <button class="btn btn-danger">Delete my Account</button>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+ROOT=$(pwd)
+
+echo "Updating Repositories ..."
+echo "If you have not setup SSH access to xivdb-git.com this will be annoying"
+echo "Running working directory = $ROOT";
+echo "!! THIS WILL TAKE TIME !!"
+echo "----------------------------------------------------------------"
+echo "Any repositories already git cloned will be skipped"
+
+cd $ROOT/sites/xivsync && composer update
+cd $ROOT/sites/xivdb-v3-frontend && composer update
+cd $ROOT/sites/xivdb-v3-data && composer update
+cd $ROOT/sites/xivdb-v3-api && composer update
+cd $ROOT/sites/xivdb-v3-tooltips && composer update
+cd $ROOT/sites/xivdb-v3-skeleton && composer update
+cd $ROOT/sites/xivdb-v3-sync && composer update
+cd $ROOT/sites/xivdb-v3-maps && composer update
+cd $ROOT/sites/xivdb-v3-pages && composer update
+cd $ROOT/sites/xivdb-v3-feedback && composer update
+cd $ROOT/sites/xivdb-v3-email && composer update
+cd $ROOT/sites/xivdb-v3-devapps && composer update
+cd $ROOT/sites/xivdb-v3-comments && composer update
+cd $ROOT/sites/xivdb-v3-screenshots && composer update
+cd $ROOT/sites/xivdb-v3-translations && composer update
+cd $ROOT/sites/xivdb-v3-monitor && composer update
+cd $ROOT/sites/xivdb-v3-mognet && composer update
+cd $ROOT/sites/xivdb-v3-search && composer update
+cd $ROOT/sites/xivdb-v3-sdk && composer update
+
+echo "----------------------------------------------------------------"
+echo "Finished"
+

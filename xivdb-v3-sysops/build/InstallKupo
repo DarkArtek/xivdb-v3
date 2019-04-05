@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# Install script for Kupo server
+#
+
+echo ""
+echo "SETTING UP KUPO"
+echo ""
+
+# Initial
+source ./build/common/initial
+
+# DigitalOcean Server Monitoring
+source ./build/common/install_do_monitoring
+
+# MariaDB
+source ./build/common/install_mariadb
+
+# ---------------------------------------
+# Custom installation stuff
+# ---------------------------------------
+
+# Import SQL
+mysql -uroot -p9D0SHvjFofUcvvDvpAdR < ~/xivdb-v3-sysops/build/KupoDatabase.sql
+
+# Restart mysql
+sudo service mysql restart
+
+#
+# remove junk
+#
+sudo apt autoremove -y -qq

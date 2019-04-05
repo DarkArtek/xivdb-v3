@@ -1,0 +1,56 @@
+#
+# XIVSync Home
+#
+
+# Sync
+server {
+    server_name xivsync.xivdb-staging.com;
+    root /home/xivdb/xivsync/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+#
+# RabbitMQ
+#
+
+server {
+    listen 80;
+    server_name xivsync.rabbitmq.xivdb-staging.com;
+
+    location / {
+        proxy_pass http://localhost:15672;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+#
+# Adminer Viewer
+# - g8moz2pcsur7zj332jce.xivdb-staging.com
+#
+server
+{
+    listen 80;
+    server_name g8moz2pcsur7zj332jce.xivdb-staging.com;
+    root /home/xivdb/adminer;
+    index index.php;
+    sendfile off;
+    client_max_body_size 500m;
+
+    # Normal directory
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    # PHP Specifics
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS off;
+        fastcgi_read_timeout 600;
+    }
+}

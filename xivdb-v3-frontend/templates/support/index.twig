@@ -1,0 +1,44 @@
+{% extends 'base/frontend.twig'  %}
+
+{% block title %}Feedback &amp; Support{% endblock %}
+
+{% block body %}
+
+    <div class="container container-page">
+
+        <h1>Feedback &amp; Support</h1>
+
+        <div class="box box-flex">
+
+            <aside>
+                <h3>ISSUES</h3>
+                <a href="{{ path('issues') }}" class="{{ page != 'public_issues' ?: 'active' }}">All Issues</a>
+                {% for type in constant('App\\Controller\\FeedbackController::TYPES') %}
+                    <a href="{{ path('issues', { cat: type }) }}" class="{{ page != 'public_' ~ type ?: 'active' }}">
+                        {{ type }}<span class="badge badge-secondary">{{ SupportCounts.public[type] ?? 0 }}</span>
+                    </a>
+                {% endfor %}
+
+                {% if auth.user and auth.user.moderator %}
+                    <h3 class="text-danger">PRIVATE</h3>
+                    <a href="{{ path('issues_private') }}" class="{{ page != 'private_issues' ?: 'active' }}">All Issues</a>
+                    {% for type in constant('App\\Controller\\FeedbackController::TYPES') %}
+                        <a href="{{ path('issues_private', { cat: type }) }}" class="{{ page != 'private_' ~ type ?: 'active' }}">
+                            {{ type }}<span class="badge badge-secondary">{{ SupportCounts.private[type] ?? 0 }}</span>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+
+                <h3>DEVELOPMENT</h3>
+                <a href="https://trello.com/b/wJq33Ily/xivdb" target="_blank">Trello</a>
+            </aside>
+
+            <div class="box-page">
+                {% block subbody %}{% endblock %}
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

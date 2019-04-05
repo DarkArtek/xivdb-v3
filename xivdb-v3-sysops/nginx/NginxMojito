@@ -1,0 +1,24 @@
+#
+# Microsites: Data, Maps, Tooltips
+#
+
+# Data
+server {
+    server_name ms.data.xivdb-staging.com xivapi.com;
+    root /home/xivdb/xivdb-v3-data/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Maps
+server {
+    server_name ms.maps.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-maps/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}
+
+# Tooltips
+server {
+    server_name ms.tooltips.xivdb-staging.com;
+    root /home/xivdb/xivdb-v3-tooltips/public;
+    include /etc/nginx/sites-available/CommonMicroSiteConfig;
+}

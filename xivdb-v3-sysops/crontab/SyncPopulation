@@ -1,0 +1,24 @@
+#
+# SyncPopulation
+#
+
+# Add stuff
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_add any > /home/xivdb/logs/characters_add.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_add any > /home/xivdb/logs/linkshells_add.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_add any > /home/xivdb/logs/freecompany_add.log
+
+# Delete stuff
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_delete any > /home/xivdb/logs/characters_delete.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto linkshells_delete any > /home/xivdb/logs/linkshells_delete.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto freecompany_delete any > /home/xivdb/logs/freecompany_delete.log
+
+#
+# Character limbo updates - This is currently disabled as I don't plan to check these characters at thi stime
+#
+# * * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 11-Limbo > /home/xivdb/logs/characters_update_11.log
+# * * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 12-Limbo > /home/xivdb/logs/characters_update_12.log
+# * * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 13-Limbo > /home/xivdb/logs/characters_update_13.log
+# * * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update 14-Limbo > /home/xivdb/logs/characters_update_14.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

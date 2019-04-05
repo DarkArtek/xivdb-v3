@@ -1,0 +1,27 @@
+#
+# SyncPremium2
+#
+
+# Character updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update X-Ramuh > /home/xivdb/logs/characters_update_ramuh.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update X-Shiva > /home/xivdb/logs/characters_update_shiva.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update X-Odin > /home/xivdb/logs/characters_update_odin.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update X-Bahamut > /home/xivdb/logs/characters_update_king-bahamut.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_update Y-OMEGA > /home/xivdb/logs/characters_update_omega.log
+
+# Friends update
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends X-Ramuh > /home/xivdb/logs/characters_friends_ramuh.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends X-Shiva > /home/xivdb/logs/characters_friends_shiva.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends X-Odin > /home/xivdb/logs/characters_friends_odin.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends X-Bahamut > /home/xivdb/logs/characters_friends_king-bahamut.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_friends Y-OMEGA > /home/xivdb/logs/characters_friends-omega.log
+
+# Achievement updates
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements X-Ramuh > /home/xivdb/logs/characters_achievements_ramuh.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements X-Shiva > /home/xivdb/logs/characters_achievements_shiva.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements X-Odin > /home/xivdb/logs/characters_achievements_odin.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements X-Bahamut > /home/xivdb/logs/characters_achievements_king-bahamut.log
+* * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:auto characters_achievements Y-OMEGA > /home/xivdb/logs/characters_achievements_omega.log
+
+# Run Logs-Manager
+0 * * * * /usr/bin/php /home/xivdb/xivsync/bin/console app:logs > /home/xivdb/logs/logs_manager.log

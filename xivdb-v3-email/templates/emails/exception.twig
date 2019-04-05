@@ -1,0 +1,18 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+
+    <p>An exception was thrown on the site.</p>
+    <p><strong>URL</strong>: <a href="{{ data.Request.url }}" target="_blank">{{ data.Request.url }}</a></p>
+
+    <h3>Exception</h3>
+    <p style="font-size: 24px;">{{ data.Exception.message }}</p>
+    <hr>
+    <p><strong>Line:</strong> #{{ data.Exception.line }} {{ data.Exception.file }}</p>
+
+    <h4>Trace:</h4>
+    <code style="color: orangered">
+        {{ data.Exception.trace|replace({ "\n":"\n\n" })|nl2br }}
+    </code>
+
+{% endblock %}

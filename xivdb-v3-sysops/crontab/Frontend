@@ -1,0 +1,6 @@
+#
+# Frontend
+#
+
+# Update lodestone content
+0 * * * * /usr/bin/php /home/xivdb/xivdb-v3-frontend/bin/console app:homepage > /home/xivdb/logs/app_homepage.log

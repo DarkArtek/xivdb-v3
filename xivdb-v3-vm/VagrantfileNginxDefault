@@ -1,0 +1,182 @@
+# ----------------------------------------------------------
+# XIVDB Frontend
+# ----------------------------------------------------------
+server {
+    server_name
+        xivdb.local
+        fr.xivdb.local
+        de.xivdb.local
+        ja.xivdb.local
+        ru.xivdb.local
+        cn.xivdb.local
+        kr.xivdb.local;
+
+    root /vagrant/sites/xivdb-v3-frontend/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# ----------------------------------------------------------
+# Kibana
+# ----------------------------------------------------------
+
+server
+{
+    listen 80;
+    server_name xivdb.kibana;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.kibana;
+
+    location / {
+        proxy_pass http://localhost:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+# ----------------------------------------------------------
+# ADMINER Database Viewer
+# ----------------------------------------------------------
+server
+{
+    listen 80;
+    server_name xivdb.adminer;
+    root /vagrant/adminer/;
+    index index.php;
+    sendfile off;
+    client_max_body_size 500m;
+
+    # Normal directory
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    # PHP Specifics
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param HTTPS off;
+        fastcgi_read_timeout 600;
+    }
+}
+
+# XIVSync
+server {
+    server_name xivsync.local;
+    root /vagrant/sites/xivsync/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# API
+server {
+    server_name api.xivdb.local;
+    root /vagrant/sites/xivdb-v3-api/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# ----------------------------------------------------------
+# XIVDB Private Micro Sites
+# ----------------------------------------------------------
+
+# Mognet
+server {
+    server_name ms.mognet.xivdb.local;
+    root /vagrant/sites/xivdb-v3-mognet/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Sync (Sync-Processor)
+server {
+    server_name ms.sync.xivdb.local;
+    root /vagrant/sites/xivdb-v3-sync/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Tooltips
+server {
+    server_name ms.tooltips.xivdb.local;
+    root /vagrant/sites/xivdb-v3-tooltips/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Maps
+server {
+    server_name ms.maps.xivdb.local;
+    root /vagrant/sites/xivdb-v3-maps/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Data
+server {
+    server_name ms.data.xivdb.local;
+    root /vagrant/sites/xivdb-v3-data/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Search
+server {
+    server_name ms.search.xivdb.local;
+    root /vagrant/sites/xivdb-v3-search/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Pages
+server {
+    server_name ms.pages.xivdb.local;
+    root /vagrant/sites/xivdb-v3-pages/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Email
+server {
+    server_name ms.email.xivdb.local;
+    root /vagrant/sites/xivdb-v3-email/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# DevApps
+server {
+    server_name ms.devapps.xivdb.local;
+    root /vagrant/sites/xivdb-v3-devapps/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Comments
+server {
+    server_name ms.comments.xivdb.local;
+    root /vagrant/sites/xivdb-v3-comments/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Screenshots
+server {
+    server_name ms.screenshots.xivdb.local;
+    root /vagrant/sites/xivdb-v3-screenshots/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Translations
+server {
+    server_name ms.translations.xivdb.local;
+    root /vagrant/sites/xivdb-v3-translations/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Feedback
+server {
+    server_name ms.feedback.xivdb.local;
+    root /vagrant/sites/xivdb-v3-feedback/public;
+    include /etc/nginx/sites-available/common;
+}
+
+# Monitor
+server {
+    server_name ms.monitor.xivdb.local;
+    root /vagrant/sites/xivdb-v3-monitor/public;
+    include /etc/nginx/sites-available/common;
+}

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo service elasticsearch start
+sleep 10
+curl -X GET 'http://localhost:9200'

@@ -1,0 +1,48 @@
+{% set page = page ?? 'home' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
+    <link rel="search" type="application/opensearchdescription+xml" title="XIVDB" href="/opensearch.xml">
+    <link rel="stylesheet" href="{{ constant('App\\Resources\\Assets::BOOTSTRAP_CSS') }}">
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">XIVDB Dashboard</h1>
+            <p class="lead">For looking behind the scenes.</p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <aside>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="#">Members</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path('dashboard_stats') }}">Stats</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#">Something else</a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="col-10">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {# Javascripts #}
+    <script src="{{ constant('App\\Resources\\Assets::JQUERY_JS') }}"></script>
+    <script src="{{ constant('App\\Resources\\Assets::BOOTSTRAP_POPPER') }}"></script>
+    <script src="{{ constant('App\\Resources\\Assets::BOOTSTRAP_JS') }}"></script>
+</body>
+</html>

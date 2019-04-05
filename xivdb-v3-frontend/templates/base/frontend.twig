@@ -1,0 +1,36 @@
+{% set page = page ?? 'home' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.ico">
+    <link rel="search" type="application/opensearchdescription+xml" title="XIVDB" href="/opensearch.xml">
+    <link rel="stylesheet" href="{{ constant('App\\Resources\\Assets::BOOTSTRAP_CSS') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}?ver={{ gitVersion() ~ gitHash() }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    {# Support popup #}
+    {% include "support/popup.twig" %}
+
+    {# Main site #}
+    <main>
+        {% include "base/header.twig" %}
+        {% include "base/search.twig" %}
+        <div class="site">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+
+    {# Tiny footer #}
+    {% include "base/footer.twig" %}
+
+    {# Javascripts #}
+    <script src="{{ constant('App\\Resources\\Assets::JQUERY_JS') }}"></script>
+    {# <script src="{{ constant('App\\Resources\\Assets::BOOTSTRAP_POPPER') }}"></script> #}
+    {# <script src="{{ constant('App\\Resources\\Assets::BOOTSTRAP_JS') }}"></script> #}
+    {% block javascripts %}{% endblock %}
+    <script src="{{ asset('assets/js/app.js') }}?ver={{ gitVersion() ~ gitHash() }}"></script>
+</body>
+</html>

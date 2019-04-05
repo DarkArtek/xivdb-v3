@@ -1,0 +1,99 @@
+<header>
+    <div class="h-logo">
+        <a href="{{ path('index') }}">
+            <img src="/img/ux/logo_light.svg" height="22" alt="XIVDB">
+        </a>
+    </div>
+    <div class="h-search">
+        <div class="h-search-bar">
+            <input type="search" placeholder="Search for something awesome!" {{ app.request.pathInfo == '/' ? 'autofocus' : '' }}>
+        </div>
+        <div class="h-search-menu">
+            <button class="btn" data-menu="h-box-database">DATABASE</button>
+            <button class="btn" data-menu="h-box-patches">PATCHES</button>
+            <button class="btn" data-menu="h-box-xivdb">MORE</button>
+
+            <div class="h-box h-box-database">
+                <div class="h-box-group">
+                    <h4>WEAPONS</h4>
+                    <a href="#">Pew Pre</a>
+                    <a href="#">Bang Bang</a>
+                    <a href="#">Wack Wack</a>
+                    <a href="#">Slash Slash</a>
+                </div>
+            </div>
+
+            <div class="h-box h-box-patches">
+                <div class="h-box-group">
+                    <h4>STORMBLOOD</h4>
+                    {% for Patch in api.PatchList.List[2] %}
+                        <a href="{{ path('content_game_patch_view', { version: Patch.Version }) }}">{{ loop.first ? '<img src="/img/ui/icons/star.svg" height="12">' : '' }}{{ Patch.Name }}</a>
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="h-box-group">
+                    <a href="{{ path('content_game_patch') }}">See more patch releases</a>
+                </div>
+            </div>
+
+            <div class="h-box h-box-xivdb">
+                <div class="h-box-group">
+                    <a href="{{ path('about') }}">About</a>
+                    <a href="{{ path('issues') }}">Feedback</a>
+                    <a href="https://discord.gg/zS8GHGJ" target="_blank">Discord</a>
+                    <a href="https://twitter.com/xivdb" target="_blank">Twitter</a>
+                    <a href="{{ path('developers_blog') }}">Blog</a>
+                    <a href="{{ path('developers') }}">Dev Apps</a>
+                    <a href="{{ path('api') }}">API</a>
+                    <a href="{{ path('developers_tooltips') }}">Tooltips</a>
+                </div>
+                <hr>
+                <div class="h-box-group">
+                    <a href="https://www.zam.com/legal/terms" target="_blank">Terms</a>
+                    <a href="https://www.zam.com/legal/privacy" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="h-user">
+        {% if auth.user and not auth.user.banned %}
+        <button class="h-user-in" data-menu="h-box-user">
+            <div>
+                <div>{{ auth.user.username|title }}</div>
+                <small>{{ auth.user.sso|upper }}</small>
+            </div>
+            <div>
+                <img src="{{ auth.user.avatar }}" height="34">
+            </div>
+        </button>
+
+        <div class="h-box h-box-user">
+            <div class="h-box-group">
+                <a href="{{ path('account_index') }}">My Account<img src="/img/ui/icons/user.svg" height="14"></a>
+            </div>
+            <hr>
+            <div class="h-box-group">
+                <button type="button" class="btn btn-outline-secondary btn-sm btn-OpenSupportPopup">Feedback &amp; Support</button>
+            </div>
+            <hr>
+            <div class="h-box-group">
+                <a href="#">English<img src="/img/ui/flags/english.png" height="16"></a>
+                <a href="#">Deutsch<img src="/img/ui/flags/german.png" height="16"></a>
+                <a href="#">Français<img src="/img/ui/flags/french.png" height="16"></a>
+                <a href="#">日本語<img src="/img/ui/flags/japanese.png" height="16"></a>
+                <a href="#">汉语<img src="/img/ui/flags/chinese.png" height="16"></a>
+                <a href="#">한국어<img src="/img/ui/flags/korean.png" height="16"></a>
+            </div>
+            <hr>
+            <div class="h-box-group">
+                <a style="opacity: 0.5;" href="{{ path('account_logout') }}">
+                    Log Out<img src="/img/ui/icons/sign-out.svg" height="14">
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{{ path('account_login') }}" class="btn btn-primary btn-signin">SIGN-IN</a>
+        {% endif %}
+    </div>
+</header>

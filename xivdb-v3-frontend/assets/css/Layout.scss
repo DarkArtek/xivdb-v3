@@ -1,0 +1,110 @@
+//
+// Boxes
+//
+
+.box {
+    border-radius: 6px;
+    overflow: hidden;
+
+    &.box-padded {
+        padding: 30px;
+    }
+
+    &.box-flex {
+        display: flex;
+    }
+
+    .box-page {
+        background-color: #222;
+    }
+
+    hr {
+        border-top: 2px solid #000;
+        margin: 30px -30px;
+    }
+
+    > aside {
+        flex: 0 1 300px;
+        min-width: 300px;
+        position: relative;
+        padding-bottom: 100px;
+        z-index: 10;
+
+        border-right: solid 1px #111;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+
+        @include horizontal-gradient(#333, 0%, #3a3a3a, 100%);
+
+        h3 {
+            display: block;
+            padding: 50px 0 10px;
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding-left: 30px;
+
+            @include mq($until: tablet) {
+                padding: 15px 20px 10px 20px;
+            }
+        }
+
+        h3 {
+            display: block;
+            padding: 50px 0 10px;
+            margin: 0;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            padding-left: 30px;
+
+            @include mq($until: tablet) {
+                padding: 15px 20px 10px 20px;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 6px 30px 6px 50px;
+            color: #888;
+            text-shadow: 0 1px 2px #222;
+
+            &.active {
+                color: var(--yellow);
+                font-weight: 700;
+            }
+
+            &:hover {
+                color: #fff;
+            }
+
+            @include mq($until: tablet) {
+                padding: 5px 10px;
+            }
+
+            .badge {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    > div:first-of-type {
+        flex: 0 1 calc(100% - 300px);
+        padding: 30px;
+    }
+}
+
+//
+// Pages
+//
+
+.page {
+    margin: 30px;
+
+    &.pad-full {
+        margin: 30px 0;
+        padding: 0 30px;
+    }
+}

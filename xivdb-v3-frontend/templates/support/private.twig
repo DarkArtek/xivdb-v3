@@ -1,0 +1,38 @@
+{% extends "support/index.twig"  %}
+
+{% set page = 'private_' ~ (app.request.get('cat') ?: 'issues') %}
+
+{% block subbody %}
+
+    {% if auth.user.moderator %}
+        <div class="alert alert-warning">
+            Please be aware these are private issues, try avoid accidentally linking the urls!
+        </div>
+
+        <p><strong>{{ SupportIssues|length|number_format }}</strong> Issues</p>
+
+        {% for issue in SupportIssues %}
+
+            <div class="sup-row">
+                <div>
+                    <a href="{{ path('feedback_issue', { id: issue.id }) }}"><strong>{{ issue.ref }}</strong> {{ issue.summary }}</a>
+                </div>
+                <div>
+                    <span class="text-success">{{ issue.status }}</span>
+                    <em>-</em>
+                    <strong>{{ issue.category }}</strong>
+                    <em>-</em>
+                    Posted: {{ issue.added|dateRelative }}
+                </div>
+            </div>
+
+        {% else %}
+            <div class="alert alert-secondary">
+                There appears to be no issues right now!
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger">How did you get here?</div>
+    {% endif %}
+
+{% endblock %}

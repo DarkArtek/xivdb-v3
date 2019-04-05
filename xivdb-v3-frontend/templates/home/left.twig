@@ -1,0 +1,108 @@
+{% if auth.user %}
+    {% if auth.user.mainCharacter %}
+        {# Main character #}
+        <div class="home-box">
+            {# Players character, if logged in #}
+            <div class="home-char1">
+                <div>
+                    <img src="{{ auth.user.mainCharacter.avatar }}"  height="92">
+                </div>
+                <div>
+                    <h4>
+                        <a href="{{ auth.user.mainCharacter.url }}">{{ auth.user.mainCharacter.name }}</a>
+                    </h4>
+                    <p>{{ auth.user.mainCharacter.server }}</p>
+
+                    <div>
+                        [ character challenges ]
+                    </div>
+                </div>
+            </div>
+            {% for character in auth.user.subCharacters %}
+                <div class="home-char2">
+                    <div>
+                        <img src="{{ character.avatar }}"  height="42">
+                    </div>
+                    <div>
+                        <h5>
+                            <a href="{{ character.url }}">{{ character.name }}</a>
+                        </h5>
+                        <p>{{ auth.user.mainCharacter.server }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {# Friends #}
+        <h3>Friends</h3>
+        <div class="home-box home-friend">
+            {# todo - change this to friends #}
+            {% for character in auth.user.characters %}
+            <div class="home-fr-{{ loop.index }}">
+                <div>
+                    <img src="{{ character.avatar }}"  height="42">
+                </div>
+                <div>
+                    <h5>
+                        <a href="{{ character.url }}">{{ character.name }}</a>
+                    </h5>
+                    <p>{{ auth.user.mainCharacter.server }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {# Free Company #}
+        <h3>Free Company</h3>
+        <div class="home-box home-fc">
+            <div>
+                <img src="https://img2.finalfantasyxiv.com/c/B3f_2b3f1638e91e9a2b521be9b9e3cb43c5_13_128x128.png" height="60">
+                <img src="https://img2.finalfantasyxiv.com/c/F03_51287a2e97459a52fe56d3534ad2ff9b_00_128x128.png" height="60">
+                <img src="https://img2.finalfantasyxiv.com/c/S06_c71591351145c0fd6154bc2ce8b33219_03_128x128.png" height="60">
+            </div>
+            <div>
+                <h4>
+                    <a href="#">EQUILIBRIUM</a>
+                </h4>
+                <div>
+                    [ fc challenges ]
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <p>Add a character!</p>
+    {% endif %}
+{% else %}
+    <div class="home-box home-login">
+        <p>Login to XIVDB and link your characters to see them here, start challenges and become awesome!</p>
+        <p>You can login using Discord, Facebook, Twitter or Google!</p>
+        <a href="{{ path('account_login') }}" class="btn btn-primary">SIGN-IN</a>
+    </div>
+{% endif %}
+
+
+<h3>Support</h3>
+<div class="home-box">
+    <a href="https://www.patreon.com/xivdb" target="_blank" class="home-patreon">
+        <img src="https://c5.patreon.com/external/logo/downloads_logomark_color_on_white.png" height="50px" width="50px">
+        <div>Become a Patron</div>
+    </a>
+</div>
+
+<div class="home-box">
+    <a href="https://discord.gg/vzDUm6U" target="_blank" class="home-discord">
+        <img src="https://discordapp.com/assets/2c21aeda16de354ba5334551a883b481.png" height="50px" width="50px">
+        <div>Join our Discord</div>
+    </a>
+</div>
+
+<h3>RANKING</h3>
+<div class="home-box home-rank">
+    Achievement Ranking
+</div>
+
+<h3>XIVSYNC</h3>
+<div class="home-box home-sync">
+    Sync Stats and Graphs
+</div>

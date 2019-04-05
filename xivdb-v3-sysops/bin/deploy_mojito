@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+#
+# DATA
+#
+
+if whiptail --yesno "Deploy DATA?" 10 30 ;then
+    cd ~/xivdb-v3-data/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Maps
+#
+
+if whiptail --yesno "Deploy Maps?" 10 30 ;then
+    cd ~/xivdb-v3-maps/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi
+
+#
+# Maps
+#
+
+if whiptail --yesno "Deploy Tooltips?" 10 30 ;then
+    cd ~/xivdb-v3-tooltips/ && git pull
+	php bin/console cache:clear && php bin/console cache:clear --env=prod
+	php bin/console doctrine:schema:update --force --dump-sql
+	echo "Complete"
+fi

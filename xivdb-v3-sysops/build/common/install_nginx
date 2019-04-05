@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#
+# Common script for installing the latest NGINX
+#
+
+echo "------------------------------------------------------------------------------------"
+echo "Install: NGINX"
+echo ""
+
+echo "- add repository"
+sudo add-apt-repository ppa:nginx/stable -y
+
+echo "- update os"
+sudo apt-get update -y
+
+echo "- install nginx stable"
+sudo apt-get install -y nginx -qq
+
+echo "✓ Done"
+echo "------------------------------------------------------------------------------------"
